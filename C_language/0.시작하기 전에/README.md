@@ -9,6 +9,13 @@
 3. 어셈블리 : 기계어로 이루어진 오브젝트 파일로 변환
 4. 링커 : 오브젝트 파일들을 묶어 exe파일 생성
 
+```
+잡지식
+gcc : linux 환경에서 사용하는 컴파일러
+Clang : Mac 환경에서 사용하는 컴파일러
+MSVC : Microsoft 에서 만든 컴파일러, VS에 내장되어 있다
+```
+
 ## 통합 개발 환경(IDE, Integrated Development Environment)
 프로그래밍 입문자가 컴파일러를 직접 다루기에는 버겁다.
 
