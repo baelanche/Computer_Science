@@ -43,13 +43,15 @@ int main() {
 scanf 는 엔터를 입력할 때까지 입력을 계속 기다리는 함수이다.  
 printf 와 마찬가지로 받는 변수의 타입을 위와같이 서술해주어야 한다.
 
+### scanf format
+
+![scanf](../image/scanf.png)
 
 
-# scanf_s
+### scanf_s 를 쓰라는 에러가 난다면?
 
 ```
- scanf_s 를 사용하라는 의미는 scanf 가 입력받는 데이터의 크기를 확인하지 않기 때문에 버퍼 오버플로우가
- 발생할 수 있기 때문이다.
+ scanf 가 입력받는 데이터의 크기를 확인하지 않기 때문에 버퍼 오버플로우가 발생할 수 있기 때문이다.
    #ifdef _MSC_VER
    #define _CRT_SECURE_NO_WARNINGS
    #endif
