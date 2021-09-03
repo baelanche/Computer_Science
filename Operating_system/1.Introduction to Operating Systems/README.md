@@ -119,30 +119,27 @@
 
 ### Common Functions of Interrupts
 
+![idt](../image/idt.png)
+
 * CPU는 인터럽트를 감지하면 동작한다.
   * Interrupt service routine, interrupt handler routine, interrupt handler
 * Interrupt vector 혹은 Interrupt Descriptor Table(IDT)는 모든 service routine들의 주소를 가지고 있다.
 * CPU는 받은 인터럽트의 번호/ID와 IDT를 통해 인터럽트 핸들러를 찾는다.
   * IDT는 조건에 따른 동작방식이 메모리에 저장되어있다.
 
+* DC는 인터럽트를 발생시킨다.
+  * interrupt-request line에 신호를 발생시킨다.
+* CPU는 인터럽트를 알아채고, 인터럽트 핸들러로 보낸다.
 
+* 시스템은 CPU의 현재상태를 늘 유지한다.
+  * 인터럽트를 처리한 후
+  * 레지스터 및 중단된 명령의 주소 저장
+  * 하트웨어 또는 운영체제에서 수행
+* 레지스터를 복구함으로써 지난 상태를 되찾는다.
 
-10101010 : Interrupt handler
+![interrupt](../image/interrupt.png)
 
-* The device controller raises an interrupt
-  * By asserting a signal on the interrupt request line
-* CPU catches the interrupt, and dispatches it to the interrupt handler
-* What CPU do after serving the interrupt request? What happed to the currently running program?
-
-CPU : 자기의 일을 수행함 -> 주변장치에서 인터럽트 발생(핀에 시그널을 통해 앎) -> IDT에 정의되어 있는 i.handler를 처리 -> 자기의 일을 수행함
-
-* Systems perserve the current state of the CPU
-  * To come back after handling the interrupt
-  * Save registers and the address of the interrupted instruction
-  * Done by HW or/and operating systems
-* Return to the last state by restoring the registers
-
-CPU는 로컬버퍼에 접근 X, 메인메모리에만 접근할 수 있음
+`CPU는 로컬버퍼에 접근 X, 메인메모리에만 접근할 수 있음`
 
 Storage Structure
 * Main memory
