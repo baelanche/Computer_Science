@@ -1,7 +1,7 @@
 ### Computer Science
 
 * Computer Architecture
-* Operating System
+* [Operating System](https://github.com/baelanche/Computer_science/tree/master/Operating_system)
 * Data Structure
 * Algorithm
 * [C](https://github.com/baelanche/Computer_science/tree/master/C_language)
