@@ -1,66 +1,40 @@
-Operating System?
+# Introduction to Operating Systems
 
-A program that acts as an intermediary between a user/application and the computer hardware
+* Operating System
+* Computer Architecture
 
-hardware : provides only basic computing resources and/or features - CPU, memory, I/O devices
+## Operating System?
 
-so, operating system controls and coordinates use of hardware among various applications and users
+* 유저와 컴퓨터 하드웨어 사이를 중재하는 역할을 하는 '프로그램'을 말한다.  
+`하드웨어 : 기본적인 컴퓨터 동작을 하는 자원이나 기기를 말한다. ex) CPU, 메모리, 입출력기기`
 
-thus, OS : The program that controls and coordinates use of hardware resources
+* 하드웨어 자원을 제어하고 조정한다.
 
-but it's not universally accepted definition
+### What operating systems do?
 
-The one program so-called 'kernel' running at all times on the computer, and all other programs are either
+* 프로그램을 실행하고 문제 해결에 도움을 준다.
+* 컴퓨터를 편안히 사용가능하게 한다.
+* 두가지 관점에서 정의할 수 있고 다음과 같다.
+  * Application/user 관점
+  
+    * 자원 관리를 하지 않고도 좋은 성능을 낼 수 있게한다.
+    * 쉬운 사용방법을 제공한다.
+    * 컴퓨터 시스템 기반의 관점을 사용자에게 제공한다.
+      * 프로세서 -> 프로세스, 쓰레드
+      * 메모리 -> 가상 메모리 주소 공간
+      * 저장소 -> 용량, 디렉토리, 파일
+      * 입출력기기 -> 파일(입출력제어)
+      * 네트워크 -> 파일(소켓, 파이프)
 
-커널과 운영체제를 혼용해서 사용하기도 한다.
+  * System 관점
+    
+    * 많은 사용자가 참여하는 애플리케이션을 다룬다.
+    * 자원 관리의 역할을 한다.
+      * CPU, 메모리, 입출력기기, 전력 등을 다룬다.
+    * 프로그램을 관리한다.
+      * 에러를 예방하고 컴퓨터의 부적절한 사용을 방지한다.
 
----
-
-What operating systems do?
-
-* Execute user programs and help their problem solving
-* Make the computer system convenient to use
-* Use computer hardware in an efficient and safe manner
-* Application/user view
-  * Want convenience, ease of use, and good performance(Don't care about resource utilization)
-  * Provides an execution environment for running programs
-  * Provides an abstract view of the underlying computer system
-    * Processor -> Processes, threads
-    * Memory -> Virtual memory address spaces
-    * Storage -> Volumes, directories, files
-    * I/O devices -> Files(ioctls)
-    * Networks -> Files(sockets, pipes)
-    * 장비 -> 운영체제가 이와같은 형태로 추상화해서 사용자에게 보여준다
-
-* System view
-  * Deal with many applications and users that compete each others
-  * and make all of them happy
-  * Resource manager
-    * Manages various resources of a computer system
-    * CPU, Memory, I/O devices, Energy
-  * Control program
-    * Controls execution of programs to prevent errors and improper use of the computer
-
----
-
-Summary
-
-* An operating system is a program that
-  * Act as an intermediary between a user/application and the computer hardware
-  * Control and coordinate use of hardware resources
-* The operating system does
-  * Protects the system and serves applications
-  * May defined by two different points of view
-    * From the application's standpoint
-    * From the system's standpoint
-
----
-
-How Computer system work?
-
----
-
-Computer system architecture
+## Computer system architecture
 
 현존하는 모든 컴퓨터는 폰노이만 아키텍처의 컴퓨터이다
 
