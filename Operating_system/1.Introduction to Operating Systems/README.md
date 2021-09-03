@@ -137,14 +137,18 @@
   * 하트웨어 또는 운영체제에서 수행
 * 레지스터를 복구함으로써 지난 상태를 되찾는다.
 
-![interrupt](../image/interrupt.png)
+![interrupt](../image/interrupt_flow.png)
+
+CPU가 request를 보냄 -> device 동작(그 동안 CPU는 자기 할 일을 한다) -> 인터럽트 신호를 CPU에게 줌 -> handler를 통한 처리
 
 `CPU는 로컬버퍼에 접근 X, 메인메모리에만 접근할 수 있음`
 
-Storage Structure
+## Storage Structure
+
 * Main memory
   * Only storage media that the CPU can access directly
-    * i.e., CPU cannot read data from disks directly
+  * CPU가 직접 접근할 수 있는 유일한 저장소
+    * 즉, CPU는 디스크는 직접 읽지 못한다
   * Random access, byte addressable
   * Typically volatile
 
@@ -152,9 +156,7 @@ Storage Structure
   * Extension of main memory that provides large non-volatile storage capacity
   * Block addressable
 
----
-
-Storage Definitions and Notation
+### Storage Definitions and Notation
 
 * Bit = 0 or 1, bygte = 8bits
 * Word = A computer architecture's native unit of data
@@ -167,10 +169,8 @@ Storage Definitions and Notation
   * Giga = 1024 x 1024 x 1024 = 2^30
   * Tera, peta, exa, zeta, yotta, ...
 
-Tip calculating 2<sup>n</sup>
+#### 2<sup>n</sup>을 계산하기
 
-2<sup>36</sup> = 2<sup>30+6</sup> = 2<sup>30</sup> x 2<sup>6</sup> = Giga * 64 = 64Giga
-
-2<sup>22</sup> = 2<sup>20+2</sup> = 2<sup>20</sup> * 2<sup>2</sup> = Mega * 4 = 4Mega
-
-2<sup>9</sup> = 2<sup>10-1</sup> = 2<sup>10</sup> / 2<sup>1</sup> = Kilo / 2 = 512Bytes
+> 2<sup>36</sup> = 2<sup>30+6</sup> = 2<sup>30</sup> x 2<sup>6</sup> = Giga * 64 = 64Giga  
+> 2<sup>22</sup> = 2<sup>20+2</sup> = 2<sup>20</sup> * 2<sup>2</sup> = Mega * 4 = 4Mega  
+> 2<sup>9</sup> = 2<sup>10-1</sup> = 2<sup>10</sup> / 2<sup>1</sup> = Kilo / 2 = 512Bytes
