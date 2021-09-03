@@ -2,6 +2,7 @@
 
 * Operating System
 * Computer Architecture
+* CPU
 
 ## Operating System?
 
@@ -36,93 +37,95 @@
 
 ## Computer system architecture
 
-현존하는 모든 컴퓨터는 폰노이만 아키텍처의 컴퓨터이다
+초기의 컴퓨터의 경우는 입력과 출력에 대한 배선 연결이 무수히 많이 되어있었다.  
+하드웨어적인 프로그래밍 방식이었으며 따라서 새로운 작업을 하려면 물리적인 작업을 거쳐야했다.  
+`브래드보드에 칩과 선을 이용한 카운터, 가산기 등이 그 예이다`  
+이런 배경속에 하드웨어를 건드리지 않고 가변적인 시스템을 처리하는 아키텍처가 등장하게 되었다.
 
-초기의 컴퓨터 ENIAC 같은 경우는 입력과 출력에 대한 배선 연결이 무수히 많이 되어있었다.  
-hardware 적 프로그래밍의 영역이다. flexible 하지 않다. 새로운 작업을 하려면 하드웨어적인 작업을 해야한다.  
-칩과 선을 이용한 카운터, 가산기 등이 그 예이다.
+### 폰노이만 구조
 
-폰노이만 아키텍처
-CPU / memory 가 따로 존재
-  * CPU는 memory로 부터 instruction을 가져와서 처리한다
-  * 복잡한 배선이 CPU안에 다 내장되어 있다
-  * 계산 결과를 다른 장치에 전달한다
+![architecture](../image/architecture.png)
 
----
+* 프로그램 내장방식이다.  
+`다른 기능을 수행하기 위해 회로를 직접 조정하던 예전과는 달리 메모리안에 소프트웨어가 내장되어 있다.`
+* CPU / memory 가 따로 존재한다.
+  * CPU는 memory로 부터 instruction을 가져와서 처리한다.
+  * 복잡한 배선이 CPU안에 다 내장되어 있다.
+  * 계산 결과를 다른 장치에 전달한다.
+* CPU가 순차적으로 명령어 하나씩 실행한다.
 
-CPU(Central Processing Unit)
-* A.k.a. processor
-* Most systems use a general-purpose processor - 일반컴퓨터라고 보면됨(intel i5, i7, ..., AMD, xeon, ...)
-  * Has a flexibility to solve general problems
-* But may have special-purpose processors as well
-  * Also called as hardware accelerators
-  * A device as a processor specialized to the devie's task
-    * GPU (Graphic Processing Unit)
-    * TPU (Tensor Processing Unit) for machine learning
+#### 단점
+* 폰노이만 병목현상(Bottleneck) - 프로그램 메모리와 데이터 메모리가 물리적 구분없이 하나의 버스를 통해 CPU와 교류하기 때문에 계산속도가 기억장치 속도에 영향을 받는다. 기억장치 속도 저하에 따라 전체 시스템의 성능 저하를 일으키는 현상을 Bottleneck 이라 한다.
+* 한 번에 하나씩의 명령어를 처리하기 때문에 CPU자원의 낭비가 생긴다.
 
-프로세서가 하나인 컴퓨터는 이제는 거의/아예 없다(듀얼코어, 쿼드코어, ...)  
-CPU는 전기를 써서 동작하는데 물리적인 열이 발생하게 된다.  
-칩의 크기는 작아지고 처리하는 양은 많아지면서 CPU의 열이 과도하게 발생하게 되었다. (CPU로 계란후라이를 만드는 영상이 실제로 존재한다)  
-때문에 전력은 유지하면서 전압을 낮추는 방식으로 개선하기 시작했다.  
-하지만 어느순간부터 더 이상 전압을 낮추면 전류가 새어버리는 지점에 도달했고, 이 방법을 더이상 사용하기는 어려워졌다.  
-이 현상을 전력 장벽(Power Wall)이라 한다.  
-코어의 개수를 늘려가면서 성능을 올리는 방식으로 다시 바뀌게 되었다.
+## CPU(Central Processing Unit)
+* 프로세서라고도 부른다.
+* 대부분은 일반적인 목적을 가진 프로세서이다. `intel i5/i7, AMD, xeon, ...`
+* 특수 목적을 가진 프로세서도 존재한다. `hardware accelerators`
+  * GPU(Graphic Processing Unit)
+  * TPU(Tensor Processing Unit) : `머신러닝을 위한 프로세서`
 
+#### 멀티프로세서/멀티코어 등장 배경
+> CPU는 전기를 써서 동작하는데 필연적으로 물리적인 열이 발생하게 된다.  
+> 점점 칩의 크기는 작아지고 처리하는 양은 많아지면서 CPU의 열이 과도하게 발생하게 되었다.  
+> 때문에 전력은 유지하면서 전압을 낮추는 방식으로 개선하기 시작했다.  
+> 하지만 어느순간부터 더 이상 전압을 낮추면 전류가 새어버리는 지점에 도달했고, 이 방법을 더이상 사용하기는 어려워졌다.  
+> (이 현상을 전력 장벽(Power Wall)이라 한다)  
+> 이 벽을 넘기 위해 코어의 개수를 늘려가면서 성능을 올리는 방식으로 바뀌게 되었다.
 
-Multiprocessor Systems
-* Systems with multiple processors
-* A.k.a. parallel systems
-  * Increased throughout
-  * Economy of scale: Shared common resources(e.g.,files)
-  * Increased reliability: Graceful degradation or fault tolerance
+### Multiprocessor Systems
+* 여러개의 프로세서가 있는 시스템을 뜻한다
+* 병렬시스템(parallel system) 이라고도 한다.
+  * 공용 자원을 통한 자원 효율성 향상
+  * 안정성 향상: 성능/결함 저하
 
-Multiprocessor Systems Classification
-* Asymmetric Multiprocessing
-  * Each processor is assigned a specific task (Boss-worker relationship)
-* Symmetric Multiprocessing(SMP) - conventional computer
-  * Each processor performs all tasks
+### Multiprocessor Systems Classification
+* Asymmetric Multiprocessing (비대칭형 다중 처리)
+  * 각 프로세서는 특정 업무를 할당받는다. (Boss-worker relationship)
+* Symmetric Multiprocessing(SMP) (대칭형 다중 처리)
+  * 각 프로세서는 모든 업무를 수행한다.
+  * 일반적인 컴퓨터의 처리 방식이다.
 * Single-chip multiprocessor(multicore)
-  * Has multiple(usually symmetric) cores in a chip
-  * Can leverage shared resources and short distances between cores
-  * on-chip shared resource 를 코어들이 공유하면서 성능이 더 좋아짐
+  * 한 칩 안에 여러개의 코어(대부분 SMP)가 들어있는 시스템
+  * 코어 사이에 공용자원 공유와 가까운 거리를 통해 성능이 향상됨
 
-Uniform Memory Access architecture vs Non-Uniform Memory Access architecture
+#### Uniform Memory Access architecture vs Non-Uniform Memory Access architecture
 
-UMA : 모든 프로세서가 단일 메모리를 사용, 동일한 메모리 액세스 시간/속도
-NUMA : 각 프로세서가 전용 메모리에 연결, 단일 주소 공간, 메모리 액세스 시간은 프로세서가 배치되는 거리에 따라 달라짐
+> UMA : 모든 프로세서가 단일 메모리를 사용, 동일한 메모리 액세스 시간/속도  
+> NUMA : 각 프로세서를 전용 메모리에 연결, 단일 주소 공간, 메모리 액세스 시간은 프로세서가 배치되는 거리에 따라 달라짐
+>
+> UMA vs NUMA
+>
+> UMA 아키텍처는 메모리에 액세스하는 프로세서에 대해 동일한 전체 대기 시간을 제공한다. 
+> 대기 시간이 일정하기 때문에 로컬 메모리에 액세스 할 때는 그리 유용하지 않다. 
+> 반면 NUMA에서는 각 프로세서에 전용 메모리가있어 로컬 메모리에 액세스 할 때 대기 시간이 필요하지 않다. 
+> 대기 시간은 프로세서와 메모리 사이의 거리가 바뀌면 변경된다 (즉, 비 균일). 그러나 NUMA는 UMA 아키텍처에 비해 성능을 향상 시켰다.
 
-UMA vs NUMA
+### Computer System Organization
 
-UMA 아키텍처는 메모리에 액세스하는 프로세서에 대해 동일한 전체 대기 시간을 제공합니다. 
-대기 시간이 일정하기 때문에 로컬 메모리에 액세스 할 때는 그리 유용하지 않습니다. 
-반면 NUMA에서는 각 프로세서에 전용 메모리가있어 로컬 메모리에 액세스 할 때 대기 시간이 필요하지 않습니다. 
-대기 시간은 프로세서와 메모리 사이의 거리가 변경되면 변경됩니다 (즉, 비 균일). 그러나 NUMA는 UMA 아키텍처에 비해 성능을 향상 시켰습니다.
-
-Computer System Organization
-
-* One or more CPUs, device controllers are connected through a common bus providing access to shared memory
+* Device controller(DC)들은 공유메모리에 접근할 수 있게하는 공용 버스를 통해 연결되어있다.
 * Concurrent execution of CPUs and devices compete for memory cycles
-* Each device controller(DC) manages the particular device type
-* Each device controller has a local buffer
-* I/O is from/to the device to/from the local buffer of controller
-* CPU and DC move data from/to main memory to/from local buffers
+* 각각의 DC는 서로 다른 타입의 기기를 다룬다.
+* 각각의 DC는 로컬버퍼를 갖는다.
+* 입력은 디바이스에서 컨트롤러의 로컬버퍼로 가는 과정이다.
+* 출력은 컨트롤러의 로컬버퍼에서 디바이스로 가는 과정이다.
+* CPU와 DC는 메인메모리/로컬버퍼에서 로컬버퍼/메인메모리로 데이터를 보낸다.
 
-CPU가 I/O device 에 request 요청했을때 그 완료시기는 어떻게 알 수 있을까?
-* Device controller notifies CPU of events by generating an interrupt
-  * When an incoming request arrives from an I/O device
-  * When it has finished its operation
-* CPU detects interrupts through interrupt-request lines
+#### CPU가 I/O device 에 request 요청했을때 그 완료시기는 어떻게 알 수 있을까?
+> DC는 인터럽트를 발생시킴으로써 CPU에게 신호를 준다.
+>  * 입출력장치에 요청이 발생했을 때
+>  * 요청을 다 끝냈을 때
+> CPU는 interrupt-request line을 통해 인터럽트를 감지한다.
 
-여기서 interrupt 는 전압
+### Common Functions of Interrupts
 
-Common Functions of Interrupts
-
-* CPU is designed to execute a function when it detects an interrupt
+* CPU는 인터럽트를 감지하면 동작한다.
   * Interrupt service routine, interrupt handler routine, interrupt handler
-* Interrupt vector or Interrupt Descriptor Table(IDT) contains the addresses of all the service routines
-* CPU looks up IDT with the receiving interrupt number/ID to find the corresponding interrupt handler
+* Interrupt vector 혹은 Interrupt Descriptor Table(IDT)는 모든 service routine들의 주소를 가지고 있다.
+* CPU는 받은 인터럽트의 번호/ID와 IDT를 통해 인터럽트 핸들러를 찾는다.
+  * IDT는 조건에 따른 동작방식이 메모리에 저장되어있다.
 
-IDT(IV) 형태로 메모리에 구성되어있다 - 어떤 선에, 어떤 전압이 걸리면 어떻게 처리를 해야한다 - 소프트웨어적인 처리 방법
+
 
 10101010 : Interrupt handler
 
