@@ -3,6 +3,7 @@
 * Operating System
 * Computer Architecture
 * CPU
+* Storage Structure
 
 ## Operating System?
 
