@@ -87,16 +87,24 @@ int main() {
   * A) 루프는 `j = n + 1`에서 종료된다. `j = n` 시점에서 모든 `j`번째 원소들은 정렬된 상태이다.
 
 ## Running time
-* Assume that we write our algorithm in such a way that it has i lines(or steps), each of which takes a constant amount of time to execute on our RAM.
-* So, c1 is the time it takes to execute line 1, c2 is the time it takes to execute line 2, etc.
-* If there are no loops in our algorithm: c1 + c2 + ... + ci.
-* A constant plus a constant plus a constant ... equals a constant.
-* So the running time of any algorithm with no loops is a constant.
+각 라인은 상수시간이 걸린다고 가정하자.
 
-* What if the algorithm has loops?
-* If the number of times the algorithm executes the loop is constant, then the running time of the algorithm is still a constant.
-* However, the running time of most algorithms will depend upon the input.
-* If the number of times the algorithm executes the loop is proportional to the input, then the running time will not be a constant.
-* The running time depends on the input: an already sorted sequence is easier to sort.
-* Parameterize the running time by the size of the input, since short sequences are easier to sort than long ones.
-* Generally, we seek upper bounds on the running time, because everybody like a guarantee.
+#### 1. 루프가 없을 때  
+1번째 줄은 c<sub>1</sub>의 시간, 2번째 줄은 c<sub>2</sub>의 시간, ..., n번째 줄은 c<sub>n</sub>의 시간이 걸린다.  
+루프가 없다면 알고리즘의 실행시간은 c<sub>1</sub> + c<sub>2</sub> + ... + c<sub>n</sub>이 된다.  
+상수시간 + 상수시간 + ... + 상수시간은 상수시간이다.  
+따라서 루프가 없다면 실행시간은 상수시간이 된다.
+
+#### 2. 루프가 있을 때  
+* 루프의 횟수가 상수일 때
+
+  루프의 횟수가 상수라면, 실행시간은 상수시간이다.
+
+* 루프의 횟수가 상수가 아닐 때
+
+  대부분 알고리즘은 인풋에 따라 실행시간이 정해진다.
+    1. 인풋이 정렬되어 있다면 정렬에 소비되는 시간이 더 적다.
+    2. 인풋의 길이가 긴 것 보다는 짧은 것이 더 빠르게 수행된다.
+  
+  일반적으로, 실행시간이 최악인 경우를 찾는다.
+  
