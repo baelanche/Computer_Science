@@ -1,15 +1,18 @@
-Internet?
+# Internet?
 
-PC, server, laptop, smartphone : billions of connected computing devices
-host = end systems
-running network apps
+### "Network of networks"
 
-wireless links, wired links : communication links
-fiber, copper / radio, satellite
-transmission rate: bandwidth
+PC, server, laptop, smartphone 등 수백만개의 디바이스가 컴퓨터 네트워크에 연결되어 있다. 이러한 환경을 인터넷이라 한다.  
+또 각 디바이스를 <b>host</b> 또는 <b>end systems</b> 라고 부른다.
 
-router : packet switches: forward packets(chunks of data)
-routers and swithces
+디바이스들이 소통하기 위해선 이들을 연결해줄 communication links 가 필요하다. 이 link 는 선의 존재 유무로 나뉜다.
+* wireless links : radio spectrum, satellite
+* wired links : fiber, cooper
+
+서로 다른 재질들로 된 link 들은 각각 다른 전송 rate 를 가지고 있는데, 이를 transmission rate 라고 한다.
+
+네트워크를 통해 데이터(chunks of data)를 보낼 때 packet 이라는 가공된 형태로 보낸다.  
+이 때 communication link 가 서로 다르다면 <b>router</b> 를 통하여 보낸다. 이러한 역할을 하는 router 를 packet switch 라고도 한다.
 
 node : all entities
 
