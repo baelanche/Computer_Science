@@ -14,13 +14,7 @@ PC, server, laptop, smartphone 등 수백만개의 디바이스가 컴퓨터 네
 네트워크를 통해 데이터(chunks of data)를 보낼 때 packet 이라는 가공된 형태로 보낸다.  
 이 때 communication link 가 서로 다르다면 <b>router</b> 를 통하여 보낸다. 이러한 역할을 하는 router 를 packet switch 라고도 한다.
 
-node : all entities
-
-Internet : network of networks
-Interconnected ISPs
-infrastructure that provides services to applications
-provides programming interface to apps
-
+host 들은 ISP(Internet Service Provider)를 통해 인터넷에 접속한다. ISP는 SK, KT, LG 등의 통신사를 일컫는다.  
 
 Protocol control sending, receiving of messages
 TCP, IP, HTTP, Skype
@@ -34,7 +28,7 @@ internet standard - RFCs : search Internet Protocol : RFC 791
 
 IP Header
 
-What's a protocol?
+# Protocol?
 
 protocol define format, order of messages sent and received among network entities, and actions token on message transmission, receipt
 
