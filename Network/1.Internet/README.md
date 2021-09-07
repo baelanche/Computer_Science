@@ -18,11 +18,12 @@ host 들은 ISP(Internet Service Provider)를 통해 인터넷에 접속한다. 
 
 # Protocol?
 
-네트워크의 노드들 사이의 메세지 형식, 송/수신 메세지의 순서 등의 전반적인 규약을 뜻한다. 
+네트워크의 노드들 사이의 메세지 형식, 송/수신 메세지의 순서 등의 전반적인 규약을 뜻한다.  
 넓은 생태계를 중재해야 하므로 IETF라는 단체에서 Internet Standard를 정의하고 있다.  
 여기서 만든 문서를 RFC라 하며 ietf.org 에서 확인할 수 있다.
 
 ![rfc](../image/rfc.png)
+
 e.g. RFC에서 Internet Protocol에 대해 정의한 문서
 
 ## Switch & Router
@@ -30,75 +31,90 @@ e.g. RFC에서 Internet Protocol에 대해 정의한 문서
 #### switch
 
 ![switch](../image/switch.png)
+
 일반적으로 Access network에 사용된다.
 
 #### router
 
 ![router](../image/router.png)
+
 더 안쪽에 있는 Core network에 사용된다.
 
-Network edge?
+## Access network
 
-network edge: hosts: clients and servers, servers often in data centers
+### Digital subscriber line(DSL)
 
-network core: interconnected routers, network of networks
+![dsl](../image/dsl.png)
 
-How to connect end systems to edge router?
-* residential access nets
-* institutional access networks(school, company)
-* mobile access networks
+음성, 데이터가 전용회선을 통해 서로 다른 주파수로 central office로 전송된다. 이 office에는 DSLAM으로 가는 전화선이 있다.
+  * DSL 전화선을 통을 통한 데이터는 인터넷에 연결된다.
+  * DSL 전화선을 통을 통한 음성은 전화망에 연결된다. 
 
-bandwidth(bits for second) -> shared or dedicated?
+<br/><br/>
 
-Access network: digital subscriber line(DSL)
-voice, data transmitted at different frequencies over dedicated line to central office
-use existing telephone line to central office DSLAM
-  * data over DSL phone line goes to Internet
-  * voice over DSL phone line goes to telephone net
-< 2.5 Mbps upstream transmission rate(typically < 1 Mbps)
-< 24 Mbps downstream transmission rate(typically < 10 Mbps)
+### Cable network
 
-Access network: cable network
+![cable](../image/cable_network.png)
 
-frequency division multiplexing: different channels transmitted in different frequency bands
-HFC : hybird fiber coax
-  * asymmetric : up to 30Mbps downstream transmission rate, 2 Mbps upstream transmission rate
-network of cable, fiber attaches homes to ISP router
-  * homes share access network to cable headend
-  * unlike DSL, which has dedicated access to central office
+주파수 분할 멀티플렉싱 - 서로 다른 주파수 대역으로 전송되는 다른 채널
+  * 비대칭적 : 최대 30Mbps 다운스트림 전송 속도, 2Mbps 업스트림 전송 속도
+  * DSL과 달리 central office와 직접 접근한다.
+  * 주파수가 섞여서 날아가도 수신측에서 주파수를 분리해낼 수 있다.
 
-주파수가 섞여서 날아가도 수신측에서 주파수를 분리해낼 수 있다.
+<br/><br/>
 
-Channels : 주파수 별로 분리해낸 것
+### Home network
 
-Access network: home network
+![home](../image/home_network.png)
 
-Ethernet(Enterprise access networks) 
-typically used in companies, universities, etc.
-10Mbps, 100Mbps, 1Gbps, 10Gbps transmission rates
-today, end systems typically connect into Ethernet switch
-속도가 워낙 좋아져서 집단에서 많이 쓰임
+-
 
-Wireless access networks
+<br/><br/>
+
+### Ethernet(Enterprise access networks)
+
+![ethernet](../image/ethernet.png)
+
+* 일반적으로 회사, 대학 등의 집단에서 사용한다.
+* 10Mbps, 100Mbps, 1Gbps, 10Gbps 등의 전송률을 가졌다.
+* 요즘은 속도가 워낙 빨라져서 end system 에서 Ethernet 에 접속한다.
+
+<br/><br/>
+
+### Wireless access networks
+
 shared wireless access network connects end system to router
-wireless LAN: within building
-wide-area wireless access: provided by telco operation, 3G, 4G:LTE
-(공유기 부터 와이파이)
+  * wireless LAN: 건물 규모
+  * wireless wide-area access network(WWAN): 무선 광역 통신망. 3G, 4G 등을 일컫는다.
 
-Hosts: sends packets of data
-host sending function:
-  * take application message
-  * breaks into smaller chunks, known as packets, of length L bits
-  * transmits packet into access network at transmission rate R
-  * link transmission rate, aka link capacity, aka link bandwidth
 
-Physical media
+## Host
 
-bit: propagates between transmitter/receiver pairs
-physical link: what lies between transmitter & receiver
+![host](../image/host.png)
+
+<br/><br/>
+
+역할 : 데이터 조각(packets)을 보낸다.
+
+host 전송 방식
+  1. 메세지를 쓴다.
+  2. L 비트 길이의 작은 조각(패킷)으로 쪼갠다.
+  3. R의 전송률로 access network로 패킷을 전송한다.
+
+### Packet transmission delay
+
+![delay](../image/delay.png)
+
+* link transmission rate / link capacity / link bandwidth
+
+## Physical media
+
+bit: 송신기/수신기 사이의 전파
+physical link: 송신기/수신기 사이에 존재하는 선
 guided media: 유선
 unguided media: 무선
-twisted pair(TP): two insulated copper wires
-coaxial cable: two concentric copper conductors(집)
-fiber optic cable: 광케이블, 전송률 높음, glass fiber carrying light pulse, each pulse a bit(장거리)
-radio: no wire / type: terrestrial microwave, LAN, wide-area, satellite
+twisted pair(TP): 두개의 꼬인 절연선
+coaxial cable: 동심원 전도체 두 개
+fiber optic cable: 광케이블, 전송률 높음, 가벼운 펄스를 전달하는 유리 섬유, 장거리
+radio: 무선
+  * terrestrial microwave, LAN, wide-area, satellite
