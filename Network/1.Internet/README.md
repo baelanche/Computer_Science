@@ -28,13 +28,13 @@ e.g. RFC에서 Internet Protocol에 대해 정의한 문서
 
 ## Switch & Router
 
-#### switch
+### switch
 
 ![switch](../image/switch.png)
 
 일반적으로 Access network에 사용된다.
 
-#### router
+### router
 
 ![router](../image/router.png)
 
@@ -109,12 +109,12 @@ host 전송 방식
 
 ## Physical media
 
-bit: 송신기/수신기 사이의 전파
-physical link: 송신기/수신기 사이에 존재하는 선
-guided media: 유선
-unguided media: 무선
-twisted pair(TP): 두개의 꼬인 절연선
-coaxial cable: 동심원 전도체 두 개
-fiber optic cable: 광케이블, 전송률 높음, 가벼운 펄스를 전달하는 유리 섬유, 장거리
-radio: 무선
+* bit: 송신기/수신기 사이의 전파
+* physical link: 송신기/수신기 사이에 존재하는 선
+* guided media: 유선
+* unguided media: 무선
+* twisted pair(TP): 두개의 꼬인 절연선
+* coaxial cable: 동심원 전도체 두 개
+* fiber optic cable: 광케이블, 전송률 높음, 가벼운 펄스를 전달하는 유리 섬유, 장거리
+* radio: 무선
   * terrestrial microwave, LAN, wide-area, satellite
