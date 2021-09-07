@@ -87,6 +87,7 @@ shared wireless access network connects end system to router
   * wireless LAN: 건물 규모
   * wireless wide-area access network(WWAN): 무선 광역 통신망. 3G, 4G 등을 일컫는다.
 
+<br/><br/>
 
 ## Host
 
@@ -104,6 +105,8 @@ host 전송 방식
 ![delay](../image/delay.png)
 
 * link transmission rate / link capacity / link bandwidth
+
+<br/><br/>
 
 ## Physical media
 
