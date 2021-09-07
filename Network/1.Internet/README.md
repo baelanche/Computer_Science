@@ -16,21 +16,26 @@ PC, server, laptop, smartphone 등 수백만개의 디바이스가 컴퓨터 네
 
 host 들은 ISP(Internet Service Provider)를 통해 인터넷에 접속한다. ISP는 SK, KT, LG 등의 통신사를 일컫는다.  
 
-Protocol control sending, receiving of messages
-TCP, IP, HTTP, Skype
-
-Internet standards
-RFC : Request for comments
-IETF : Internet Engineering Task Force
-
-ietf.org
-internet standard - RFCs : search Internet Protocol : RFC 791
-
-IP Header
-
 # Protocol?
 
-protocol define format, order of messages sent and received among network entities, and actions token on message transmission, receipt
+네트워크의 노드들 사이의 메세지 형식, 송/수신 메세지의 순서 등의 전반적인 규약을 뜻한다. 
+넓은 생태계를 중재해야 하므로 IETF라는 단체에서 Internet Standard를 정의하고 있다.  
+여기서 만든 문서를 RFC라 하며 ietf.org 에서 확인할 수 있다.
+
+![rfc](../image/rfc.png)
+e.g. RFC에서 Internet Protocol에 대해 정의한 문서
+
+## Switch & Router
+
+#### switch
+
+![switch](../image/switch.png)
+일반적으로 Access network에 사용된다.
+
+#### router
+
+![router](../image/router.png)
+더 안쪽에 있는 Core network에 사용된다.
 
 Network edge?
 
