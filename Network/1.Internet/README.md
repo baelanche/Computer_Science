@@ -92,8 +92,6 @@ shared wireless access network connects end system to router
 
 ![host](../image/host.png)
 
-<br/><br/>
-
 역할 : 데이터 조각(packets)을 보낸다.
 
 host 전송 방식
