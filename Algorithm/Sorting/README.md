@@ -110,34 +110,35 @@ int main() {
   
 ### Analysis
 
-* Cost : some constant value that indicates the computation cost of the operation performed in a line of the algorithm
-* Times : the number of times a particular line of the algorithm will be executed
-* t be the number of times that the while loop test is executed for that value of j
-
-루프해드는 루프바디보다 1번 더 수행된다
-
-* Total cost :  time of algorithm
+* Cost : 알고리즘에서 수행된 코드 라인의 비용을 나타내는 상수
+* Times : 각 줄이 실행될 횟수
+* Total cost :  time of algorithm = Cost * Times
 
 ### Kinds of analyses
 
-* Worst-case(usually) : maximum time of algorithm on any input of size n.
-* Average-case(sometimes) : expected time of algorithm over all inputs of size n. need assumption of statistical distribution of inputs.
-* Best-case : Cheat with a slow algorithm that works fast on some input.
+* <b>Worst-case(usually)</b> : 크기 n의 입력에 대한 알고리즘의 최대 시간
+* Average-case(sometimes) : 모든 입력값 n에 대한 알고리즘의 예상 시간
+* Best-case : 알고리즘이 가장 빠르게 동작하게 인풋을 입력
 
 case ascending sort algorithm :
   * Worst-case : descending : O(n<sup>2</sup>)
   * Best-case : ascending : O(n)
 
-Machine-independent time
+### Machine-independent time
 
 It depends on the speed of our computer
-  * relative speed
-  * absolute speed
+  * relative speed (on the same machine)
+  * absolute speed (on different machine)
+
+->
 
 Ignore machine-dependent constants  
 Look at growth of T(n) as n -> infinite
 
 Asymptotic Analysis
+
+Asymptotic?
+  * Asymptotic describes the behavior of a function in the limit - for sufficiently large values of its parameter
 
 Asymptotic Notation
 * The order of growth of the running time of an algorithm is defined as the highest-order term of an expression that describes the running time of the algorithm
