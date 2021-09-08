@@ -107,3 +107,8 @@ int main() {
     2. 인풋의 길이가 긴 것 보다는 짧은 것이 더 빠르게 수행된다.
   
   일반적으로, 실행시간이 최악인 경우를 찾는다.
+
+### Running time of Insertion sort
+
+* Worst-case : 역순으로 정렬된 상태 : O(n<sup>2</sup>)
+* Best-case : 정렬된 상태 : O(n)
