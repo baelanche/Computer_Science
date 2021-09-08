@@ -1,4 +1,4 @@
-### Analysis
+# Analysis
 
 * Cost : 알고리즘에서 수행된 코드 라인의 비용을 나타내는 상수
 * Times : 각 줄이 실행될 횟수
@@ -9,10 +9,6 @@
 * <b>Worst-case(usually)</b> : 크기 n의 입력에 대한 알고리즘의 최대 시간
 * Average-case(sometimes) : 모든 입력값 n에 대한 알고리즘의 예상 시간
 * Best-case : 알고리즘이 가장 빠르게 동작하게 인풋을 입력
-
-case ascending sort algorithm :
-  * Worst-case : descending : O(n<sup>2</sup>)
-  * Best-case : ascending : O(n)
 
 ### Machine-independent time
 
