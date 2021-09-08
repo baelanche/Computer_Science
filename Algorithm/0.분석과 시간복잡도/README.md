@@ -8,42 +8,54 @@
 
 * <b>Worst-case(usually)</b> : 크기 n의 입력에 대한 알고리즘의 최대 시간
 * Average-case(sometimes) : 모든 입력값 n에 대한 알고리즘의 예상 시간
-* Best-case : 알고리즘이 가장 빠르게 동작하게 인풋을 입력
+* Best-case : 크기 n의 입력에 대한 알고리즘의 최소 시간
 
 ### Machine-independent time
 
-It depends on the speed of our computer
+시간은 컴퓨터의 성능에 좌우된다.
   * relative speed (on the same machine)
   * absolute speed (on different machine)
 
-->
+컴퓨터에 좌우되지 않는 방법을 찾기 위해 n을 무한대로 보내 total cost 를 찾는 방법을 고안하였다.
 
-Ignore machine-dependent constants  
-Look at growth of T(n) as n -> infinite
+<br/><br/>
 
-Asymptotic Analysis
+# Asymptotic Analysis
 
 Asymptotic?
-  * Asymptotic describes the behavior of a function in the limit - for sufficiently large values of its parameter
+  * 충분히 큰 입력값으로 함수의 한계 내 동작을 얻는 방법이다.
 
 Asymptotic Notation
-* The order of growth of the running time of an algorithm is defined as the highest-order term of an expression that describes the running time of the algorithm
-* We ignore the leading term's constant coefficient, as well as all of the lower order terms in the expression
+* 알고리즘의 실행 시간 증가 순서는 실행시간을 설명하는 식의 최고차수의 항으로 정의된다.
+* 하위차수의 항과 상수는 무시한다.
 
-e.g. an<sup>2</sup> + bn + c = simply n<sup>2</sup>
+`e.g.` an<sup>2</sup> + bn + c -> n<sup>2</sup>
 
-### Big O
+<br/><br/>
 
-Let's say that we have some function that represents the sum total of all the running-time costs of an algorithm
+## Big O
 
-* For a cost algorithm, the running time is : f(n) = cn(logn) + cn
-* We want to describe the running time of that sort algorithm in terms of another function, g(n), so that we can say f(n) = O(g(n)) : cn(logn) + cn = O(g(n))
+알고리즘의 모든 실행 시간 비용의 합계를 나타내는 함수가 있다고 하자.
 
-big O : 상한선 : upper bound
+* 비용함수 f(n) 의 실행 시간 f(n) = cn(logn) + cn
+* 다른 함수의 관점에서 정렬 알고리즘의 실행 시간을 표현할 것이다.
+  * f(n) = O(g(n)) 이 되는 g(n)을 만든다.
+  * O(g(n)) = cn(logn) + cn 이 된다.
+    * c : multiplicative constant
+    * n<sub>0</sub> : threshold
 
-### Proof : fn < O(g(n)) (TEST!)
+### Proof
 
-1. c(c > 0)와 n<sub>0</sub>(n<sub>0</sub> >= 0) 가 존재함을 증명
-  * e.g. f(n) = 7n - 2 / g(n) = n
-  * condition : 7n - 2 <= cn
-  * c = 7, n<sub>0</sub> = 1 일때 성립
+0 <= f(n) <= cg(n) 이 성립함을 보이자.  
+위 식을 만족시키는 c(c > 0)와 n<sub>0</sub>(n<sub>0</sub> >= 0) 가 존재함을 증명할 것이다.
+
+#### e.g.1) f(n) = 7n - 2
+  * g(n) 은 f(n) 의 최고차수인 n을 받아 g(n) = n 이다.
+  * 적당한 c 를 선택한다. 여기서는 c = 7 로 진행할 것이다.
+  * n<sub>0</sub> 도 마찬가지로 대입해본다. n<sub>0</sub> = 1 을 대입해보니 성립한다.
+  * n이 n<sub>0</sub> = 1 보다 같거나 클 때 f(n)이 cg(n) 보다 항상 작으므로 전제가 성립한다.
+  * 따라서 f(n) = O(g(n)) 이다.
+  * `g(n) 은 f(n) 의 점진적 상한선이라 할 수 있다.`
+
+#### e.g.2) f(n) = n<sup>3</sup> + 100n<sup>2</sup>, g(n) = n<sup>3</sup>
+  * 
