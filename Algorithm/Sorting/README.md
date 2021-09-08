@@ -108,3 +108,55 @@ int main() {
   
   일반적으로, 실행시간이 최악인 경우를 찾는다.
   
+### Analysis
+
+* Cost : some constant value that indicates the computation cost of the operation performed in a line of the algorithm
+* Times : the number of times a particular line of the algorithm will be executed
+* t be the number of times that the while loop test is executed for that value of j
+
+루프해드는 루프바디보다 1번 더 수행된다
+
+* Total cost :  time of algorithm
+
+### Kinds of analyses
+
+* Worst-case(usually) : maximum time of algorithm on any input of size n.
+* Average-case(sometimes) : expected time of algorithm over all inputs of size n. need assumption of statistical distribution of inputs.
+* Best-case : Cheat with a slow algorithm that works fast on some input.
+
+case ascending sort algorithm :
+  * Worst-case : descending : O(n<sup>2</sup>)
+  * Best-case : ascending : O(n)
+
+Machine-independent time
+
+It depends on the speed of our computer
+  * relative speed
+  * absolute speed
+
+Ignore machine-dependent constants  
+Look at growth of T(n) as n -> infinite
+
+Asymptotic Analysis
+
+Asymptotic Notation
+* The order of growth of the running time of an algorithm is defined as the highest-order term of an expression that describes the running time of the algorithm
+* We ignore the leading term's constant coefficient, as well as all of the lower order terms in the expression
+
+e.g. an<sup>2</sup> + bn + c = simply n<sup>2</sup>
+
+### Big O
+
+Let's say that we have some function that represents the sum total of all the running-time costs of an algorithm
+
+* For a cost algorithm, the running time is : f(n) = cn(logn) + cn
+* We want to describe the running time of that sort algorithm in terms of another function, g(n), so that we can say f(n) = O(g(n)) : cn(logn) + cn = O(g(n))
+
+big O : 상한선 : upper bound
+
+### Proof : fn < O(g(n)) (TEST!)
+
+1. c(c > 0)와 n<sub>0</sub>(n<sub>0</sub> >= 0) 가 존재함을 증명
+  * e.g. f(n) = 7n - 2 / g(n) = n
+  * condition : 7n - 2 <= cn
+  * c = 7, n<sub>0</sub> = 1 일때 성립
