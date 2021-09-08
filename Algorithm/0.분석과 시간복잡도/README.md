@@ -55,7 +55,15 @@ Asymptotic Notation
   * n<sub>0</sub> 도 마찬가지로 대입해본다. n<sub>0</sub> = 1 을 대입해보니 성립한다.
   * n이 n<sub>0</sub> = 1 보다 같거나 클 때 f(n)이 cg(n) 보다 항상 작으므로 전제가 성립한다.
   * 따라서 f(n) = O(g(n)) 이다.
-  * `g(n) 은 f(n) 의 점진적 상한선이라 할 수 있다.`
+
+![threshold](../image/threshold.png)
+
+  * n<sup>0</sup> 를 기준으로 전제조건이 항상 성립한다.(n<sup>0</sup> : threshold)
+  * g(n) 은 f(n) 의 점진적 상한선이다.
 
 #### e.g.2) f(n) = n<sup>3</sup> + 100n<sup>2</sup>, g(n) = n<sup>3</sup>
-  * 
+  * f(n) = O(g(n)) 증명
+  * c = 1 
+  * n<sub>0</sub> = 
+
+  * g(n) = O(f(n)) 증명
