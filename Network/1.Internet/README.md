@@ -32,13 +32,13 @@ e.g. RFC에서 Internet Protocol에 대해 정의한 문서
 
 ![switch](../image/switch.png)
 
-일반적으로 Access network에 사용된다.
+일반적으로 Access network에 사용된다. (L3 - local)
 
 ### router
 
 ![router](../image/router.png)
 
-더 안쪽에 있는 Core network에 사용된다.
+더 안쪽에 있는 Core network에 사용된다. (L2 - Internet)
 
 ## Access network
 
