@@ -40,6 +40,8 @@ e.g. RFC에서 Internet Protocol에 대해 정의한 문서
 
 더 안쪽에 있는 Core network에 사용된다. (L2 - Internet)
 
+# Network Edge
+
 ## Access network
 
 ### Digital subscriber line(DSL)
