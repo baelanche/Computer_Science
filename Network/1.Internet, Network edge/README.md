@@ -121,3 +121,4 @@ host 전송 방식
 * fiber optic cable: 광케이블, 전송률 높음, 가벼운 펄스를 전달하는 유리 섬유, 장거리
 * radio: 무선
   * terrestrial microwave, LAN, wide-area, satellite
+
