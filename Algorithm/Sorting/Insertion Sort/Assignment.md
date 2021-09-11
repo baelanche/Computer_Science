@@ -22,6 +22,7 @@
       * A) 루프는 `j = n + 1`에서 종료된다. `j = n` 시점에서 모든 `j`번째 원소들은 정렬된 상태이다
 
 ### 3. insertion sort(A, n)의 best case 런타임을 계산과정과 함께 보이세요.
+   
 
 ### 4. insertion sort(A, n)의 worst case 런타임을 계산과정과 함께 보이세요.
 
