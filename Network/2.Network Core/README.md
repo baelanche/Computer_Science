@@ -90,3 +90,22 @@ Skype(VoIP) 와 같은 음성데이터를 송/수신할때 패킷스위칭을 �
 internet structure : network of networks
 
 엔드 시스템은 ISP를 통해 인터넷에 접속한다. ISP가 노드들을 연결해주는데 어떤식으로 연결해주는가?
+
+ISP를 여러개 만들것인가, 한개만 만들것인가? 재정적 문제와 국가의 협약에 결정되는 부분이 크다.
+
+수백만개의 access network를 ISP는 어떻게 연결하나?
+
+O(N^2) 개의 연결 : 모든 access network 를 다 연결 : 지수적 증가 : not scale : 좋은 방식이 아니다
+
+global ISP를 center에 둠 , 그대로 두고 access network 가 생겨나면 하나씩 붙임
+
+global ISP 가 전세계의 한개만 있개만 있을수는 있으나 자연스레 경쟁업체가 생김
+
+또 global ISP 들 끼리도 연결되어 있어야함
+
+IXP : router
+
+regional network : 지역의 네트워크들을 묶어줌
+
+그래서 레이어별 ISP들이 설계됨
+
