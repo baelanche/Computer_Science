@@ -3,8 +3,8 @@
 ## Insertion sort
 
 ### 1. insertion sort(A, n) 알고리즘의 작동원리를 설명하세요.
-손에 쥔 카드패를 정렬하는 방법과 유사하다. 선택한 카드의 좌측 카드와 수를 비교하며 오름차순으로 정렬한다.  
-이를 맨 오른쪽 카드가 키 카드가 될 때까지 반복한다.
+손에 쥔 카드패를 정렬하는 방법과 유사하다.  
+배열의 모든 요소를 앞에서부터 차례대로 이미 정렬된 배열 부분과 비교하여, 적절한 위치에 삽입하여 정렬하는 알고리즘이다.
 
    1. A[1] 왼쪽에는 어떤 원소도 가지고 있지 않기 때문에 A[2] 부터 탐색을 시작한다.
    2. A[j] 에는 `현재 위치`, A[i] 에는 현재 위치의 `이전 위치(A[j-1])`를 저장한다.
@@ -66,3 +66,44 @@ INSERTION-SORT_DESC(A,n)
    5. j+1 이 배열의 인덱스를 벗어나지 않는다면 A[j+1] 이 다시 `현재 위치`가 되고 2~4번을 반복한다.
 
 ### 6. Insertion sort를 응용한 문제 (a variant of insertion sort)를 만들어보세요. 여러분이 문제 출제자라면 우리가 배운 insertion sort를 어떻게 변형하여 출제할 수 있을지 고민해보세요. 요구하는 input과 output을 명확하게 설명해주세요.
+
+Binary insertion sort는 insertion sort에 binary search 알고리즘을 적용한 정렬 알고리즘이다.  
+이 알고리즘을 적용하면 키 값의 위치를 찾는데 걸리는 시간이 총 O(nlogn)으로 기존 알고리즘에 비해 빠르다.  
+
+insertion sort(A,n) 의 input이
+```
+1 2 4 5 7 3
+```
+이고 현재 key가 `3` 일때
+
+<b>1) insertion sort 일 때 값을 비교하는 원소를 차례로 쓰시오.</b>  
+<b>2) binary insertion sort 일 때 값을 비교하는 원소를 차례로 쓰시오.</b> (아래 함수를 참고해서 해결한다)
+
+* binary search
+```.c
+/*
+이미 정렬되어있는 배열을 반으로 잘라 키 값과 배열의 중간값의 크기를 비교한다.  
+키 값이 중간값보다 작으면 왼쪽 배열, 키 값이 중간값보다 크면 오른쪽 배열을 대상으로 재탐색한다.
+동일한 방식으로 탐색하며 키 값의 적절한 위치를 찾을때까지 반복한다.
+binary_search(int, int, int) { return int }
+start : 현재 탐색중인 배열의 시작 인덱스
+end : 현재 탐색중인 배열의 마지막 인덱스
+key : 위치를 찾고싶은 수
+mid : 현재 탐색중인 배열의 중간 인덱스
+*/
+int binary_search(int start, int end, int key) {
+   int mid;
+   while (start < end) {
+      mid = (start + end) / 2;
+      if (key >= a[mid])
+         start = mid + 1;
+      else
+         end = mid;
+   }
+   return end;
+}
+```
+
+* Answer
+   1. 7 5 4
+   2. 4 2
