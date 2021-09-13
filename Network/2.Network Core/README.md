@@ -7,7 +7,7 @@
 
 ## Packet-switching
 
-shared / bandwidth 공유
+bandwidth 를 공유하는 방식이다.
 
 호스트가 작은 조각인 패킷으로 데이터를 전송하며 데이터를 전송하는 동안만 자원을 사용하도록 하는 방법
 
