@@ -33,19 +33,22 @@ Asymptotic Notation
 
 Type
 * Big O
+* Big Omega
+* Big Theta
 
 <br/><br/>
 
 ## Big O
 
-알고리즘의 모든 실행 시간 비용의 합계를 나타내는 함수가 있다고 하자.
+![threshold](../image/threshold.png)
 
-* 비용함수 f(n) 의 실행 시간 f(n) = cn(logn) + cn
-* 다른 함수의 관점에서 정렬 알고리즘의 실행 시간을 표현할 것이다.
-  * f(n) = O(g(n)) 이 되는 g(n)을 만든다.
-  * O(g(n)) = cn(logn) + cn 이 된다.
+upper bound 를 제시하는 함수이다.  
+
+* 0 <= f(n) <= cg(n), c > 0, n<sub>0</sub> >= 0
     * c : multiplicative constant
     * n<sub>0</sub> : threshold
+
+* Worst-case 를 표현할 때 쓴다
 
 ### Proof
 
@@ -59,11 +62,6 @@ Type
   * n이 n<sub>0</sub> = 1 보다 같거나 클 때 f(n)이 cg(n) 보다 항상 작으므로 전제가 성립한다.
   * 따라서 f(n) = O(g(n)) 이다.
 
-![threshold](../image/threshold.png)
-
-  * n<sup>0</sup> 를 기준으로 전제조건이 항상 성립한다.(n<sup>0</sup> : threshold)
-  * g(n) 은 f(n) 의 점진적 상한선이다.
-
 #### e.g.2) f(n) = n<sup>3</sup> + 100n<sup>2</sup>, g(n) = n<sup>3</sup>
    * f(n) = O(g(n)) 증명
       * We clame that c > 0, n<sub>0</sub> >= 0 that make the n<sup>3</sup> + 100n<sup>2</sup> <= cn<sup>3</sup> holds for all n >= n<sub>0</sub>
@@ -76,3 +74,22 @@ Type
       * c = 1, n = 0, 1, ... (threshold n = 0)
       * g(n) = n<sup>3</sup> <= c(n<sup>3</sup> + 100n<sup>2</sup>) = cf(n)
       * hence, g(n) = O(f(n))
+
+
+## Big Omega
+
+![big_omega](../image/big_omega.png)
+
+lower bound 를 제시하는 함수이다.
+
+* 0 <= cg(n) <= f(n), c > 0, n<sub>0</sub> >= 0
+   * c : multiplicative constant
+   * n<sub>0</sub> : threshold
+
+* Best-case 를 표현할 때 쓴다.
+
+## Big Theta
+
+상, 하한선을 모두 구한다.
+
+* 0 <= c<sub>1</sub>g(n) <= f(n) <= c<sub>2</sub>g(n), c<sub>1</sub>, c<sub>2</sub>, n<sub>0</sub> >= 0
