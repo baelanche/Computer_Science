@@ -40,7 +40,7 @@ Type
 
 ## Big O
 
-![threshold](../image/threshold.png)
+![big_o](../image/big_o.png)
 
 upper bound 를 제시하는 함수이다.  
 
@@ -89,6 +89,8 @@ lower bound 를 제시하는 함수이다.
 * Best-case 를 표현할 때 쓴다.
 
 ## Big Theta
+
+![big_theta](../image/big_theta.png)
 
 상, 하한선을 모두 구한다.
 
