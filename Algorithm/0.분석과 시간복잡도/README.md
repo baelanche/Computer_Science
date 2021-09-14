@@ -31,6 +31,9 @@ Asymptotic Notation
 
 `e.g.` an<sup>2</sup> + bn + c -> n<sup>2</sup>
 
+Type
+* Big O
+
 <br/><br/>
 
 ## Big O
@@ -62,8 +65,14 @@ Asymptotic Notation
   * g(n) 은 f(n) 의 점진적 상한선이다.
 
 #### e.g.2) f(n) = n<sup>3</sup> + 100n<sup>2</sup>, g(n) = n<sup>3</sup>
-  * f(n) = O(g(n)) 증명
-  * c = 1 
-  * n<sub>0</sub> = 
+   * f(n) = O(g(n)) 증명
+      * We clame that c > 0, n<sub>0</sub> >= 0 that make the n<sup>3</sup> + 100n<sup>2</sup> <= cn<sup>3</sup> holds for all n >= n<sub>0</sub>
+      * f(n) = n<sup>3</sup> + 100n<sup>2</sup> <= n<sup>3</sup> + 100n<sup>3</sup> = 101n<sup>3</sup> = cn<sup>3</sup> = cg(n)
+      * thus, c = 101, n = 0, 1, ... (threshold n = 0)
+      * 같은 방식으로 증명한다. hence, f(n) = O(g(n))
 
-  * g(n) = O(f(n)) 증명
+   * g(n) = O(f(n)) 증명
+      * We clame that c > 0, n<sub>0</sub> >= 0 that make the n<sup>3</sup> <= c(n<sup>3</sup> + 100n<sup>2</sup>) holds for all n >= n<sub>0</sub>
+      * c = 1, n = 0, 1, ... (threshold n = 0)
+      * g(n) = n<sup>3</sup> <= c(n<sup>3</sup> + 100n<sup>2</sup>) = cf(n)
+      * hence, g(n) = O(f(n))
