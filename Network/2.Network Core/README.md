@@ -7,17 +7,18 @@
 
 ## Packet-switching
 
-bandwidth 를 공유하는 방식이다.
+bandwidth 를 공유(shared)하는 방식이다.  
+호스트가 작은 조각인 패킷으로 데이터를 전송하며 데이터를 전송하는 동안만 자원을 사용한다.
 
-호스트가 작은 조각인 패킷으로 데이터를 전송하며 데이터를 전송하는 동안만 자원을 사용하도록 하는 방법
+![packet_switching](../image/packet_switching.png)
 
-[pic] 패킷별 L bits , link의 bandwidth : R , L/R 초가 걸림
+각 패킷은 L bits 를 가졌다.  
+link 의 bandwidth 는 R이며 패킷이 전송 될 때 L/R 초가 걸린다.
 
-store and forward : 데이터가 라우터에 store됨 L bits에 대해서, 그리고 전송함
+store and forward : 라우터에 L bits 전체가 store 된 후 전송하는 방식이다.  
+end-end delay : propagation delay 가 0이라는 가정 하에 그림에서 두번의 링크를 타니까 2xL/R 이다.
 
-end-end delay : 2L/R 두번 링크를 타니까
-
-one-hop numerical e.g. (hop : link) 위 그림은 two-hop
+one-hop transmission delay 는 L/R 이다. hop은 link를 뜻하며 위 그림은 two-hop 이다.
 
 ### Queueing delay, loss
 
