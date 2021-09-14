@@ -38,4 +38,17 @@ Merge 할 배열들은 이미 정렬되어 있는 배열이다.
 ![l](../../image/merge_l.png)
 ![r](../../image/merge_r.png)
 
-`inf : infinity symbol, 배열의 끝을 표시`
+L = [1, 4, 7] R = [2, 3, 9]  
+`inf : 배열의 끝을 표시하기 위한 수(배열안의 원소 중 어떤 수보다도 커야한다)`
+
+![merge1](../../image/merge1.png)
+![merge2](../../image/merge2.png)
+![merge3](../../image/merge3.png)
+![merge4](../../image/merge4.png)
+![merge5](../../image/merge5.png)
+
+1. 양 배열의 첫번째 원소를 비교하여 작은 것을 내려쓴다.
+2. L 배열에서 원소가 빠졌으므로 다음 원소를 가리켜 비교한다.
+3. 같은 매커니즘으로 계속 비교하며 양 배열의 인덱스가 inf 를 가리키면 중단한다.
+
+횟수 : n = (r-p)+1
