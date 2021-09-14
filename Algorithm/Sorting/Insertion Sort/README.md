@@ -112,3 +112,8 @@ int main() {
 
 * Worst-case : 역순으로 정렬된 상태 : O(n<sup>2</sup>)
 * Best-case : 정렬된 상태 : O(n)
+
+## Big O
+* 삽입 정렬의 실행시간은 O(n<sup>2</sup>)인가?
+   * Worst-case 일때 O(n<sup>2</sup>)이다.
+   * Big O notation 은 최악의 경우가 O(n<sup>2</sup>) 임을 보장한다.
