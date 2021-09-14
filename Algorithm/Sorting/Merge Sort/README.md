@@ -16,4 +16,26 @@ Recursion 에 기반한 divide-and-conquer 알고리즘을 사용한다.
 
 ## Process
 
-![merge_flow](../image/merge_flow.png)
+![merge_flow](../../image/merge_flow.png)
+
+합병정렬은 재귀로 구성되어 있다. 재귀가 멈추는 순간은 작은 배열의 크기가 1일때 이다.  
+conbine 과정에서 `Merge` 알고리즘을 수행한다.
+
+### Pseudo code(Merge-sort)
+```
+MERGE-SORT(A[1...n],p,r)
+  1. If p < r
+  2. q <- fall(p+r/2)
+  3. MERGE-SORT(A, p, q)
+  4. MERGE-SORT(A, q+1, r)
+  5. MERGE(A, p, q, r)
+```
+
+### Merge function
+
+Merge 할 배열들은 이미 정렬되어 있는 배열이다.
+
+![l](../../image/merge_l.png)
+![r](../../image/merge_r.png)
+
+`inf : infinity symbol, 배열의 끝을 표시`
