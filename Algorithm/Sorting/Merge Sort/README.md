@@ -86,3 +86,37 @@ p = 배열의 첫번째 인덱스
 ```
 
 여기서 r = 6, p = 1 이므로 n = (r - p) + 1 = 6 이다.
+
+### Code
+
+
+
+## Proof : Loop invariants
+
+1. Initialization : 루프를 시작할 때 A[p...k-1]
+2. Maintenance : 
+3. Termination : k = r + 1 일때 루프가 종료된다.  
+    r = k - 1 이므로 A[p...k-1] -> A[p...r] 이 된다.
+    
+## Running Time
+
+input size : n
+T(n) : Running time
+D(n) : divide  
+C(n) : combine
+
+if (n <= c) : n이 constant이다. 다루지 않음
+
+Best case : n = 1
+Divide : 
+Conquer : 
+Conbine : n
+
+Divide step : 길이가 n 일때 트리 형태로 배열이 쪼개질 것이다. 이 때 스텝이 k 일때 배열의 갯수는 2<sup>k</sup> 이다.
+height는 logn 이다.  
+결과적으로 log<sub>2</sub>n + 1 의 단계 , total cost : cn(log<sub>2</sub>n + 1) -> 최고차항만 남긴다. hence, O(nlogn) 이다.
+
+## Conclusions
+
+* O(n<sup>2</sup>) 인 Insertion sort 보다 성능이 좋다.
+* 실제로, n > 30 일때 Merge sort 가 Insertion sort 보다 빠르게 동작한다.
