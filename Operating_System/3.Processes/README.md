@@ -8,6 +8,8 @@
 
 ## From program to process
 
+![to_process](../image/to_process.png)
+
 * 프로그램은 디스크에 저장되어 있다.
 * 프로그램을 메모리로 로드한다.
 * 실행이 되면서 동적 영역인 Stack(local variable), Heap(dynamic)이 생성된다.
@@ -63,6 +65,8 @@ int main(int argc, char *argv[]) {
 * terminated : 실행이 종료된 프로세스
 
 ## Process Hierarchy
+
+![hierarchy](../image/hierarchy.png)
 
 * 부모 프로세스는 또 다른 자식 프로세스를 만들 수 있다.
 * 같은 부모를 둔 자식 프로세스들은 형제이다.
