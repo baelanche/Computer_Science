@@ -189,4 +189,40 @@ A) 순서대로 출력되지는 않는다
 
 * 현재 프로세스의 상태를 갈아치우는 시스템 콜
 * 현재 주소 공간은 모두 버려지고 재구축된다.
-* API 에 variants 들이 존재한다.
+* variants 들이 존재한다.
+
+## Process Termination
+
+* Voluntary
+  * Normal exit
+  * Error exit
+* Involuntary
+  * Fatal error
+  * 다른 프로세스에 의해 종료된다(시그널을 받음)
+
+### exit()
+
+시스템 콜 호출시 CPU가 해당 프로세스의 자원을 모두 해제시키고 종료시킨다.  
+이 때 main() 함수에서 return 한 return code 는 남아있게 되는데 이는 누군가 가져갈 때 까지 살아있다.  
+이 프로그램이 종료되기를 기다리는 프로세스는 wait 혹은 waitpid 함수를 통해 return code 를 받을 수 있다.
+return code 를 넘겨받은 프로세스가 생긴다면 exit() 를 부른 프로세스는 완전히 종료된다.
+
+### abort(), kill()
+
+시그널을 통해 다른 프로세스를 종료시킨다.
+
+#### Zombie process
+
+프로세스는 종료되었지만 wait() 함수가 아직 호출되지 않은 프로세스
+
+#### Orphan process
+
+wait() 함수 호출 없이 종료된 부모 프로세스를 가진 자식 프로세스
+
+solution
+* cascading termination : 남은 자식 프로세스를 모두 종료시킨다(과격한 방식이라 자주 사용되지는 않음)
+* reparenting : 고아 프로세스를 다른 프로세스에게 입양보내는 방식(리눅스, 유닉스에서 잘 사용된다)
+
+## Process Cycle
+
+![process_cycle](../image/process_cycle.png)
