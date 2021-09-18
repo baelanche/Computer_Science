@@ -16,9 +16,9 @@ bandwidth 를 공유(shared)하는 방식이다.
 link 의 bandwidth 는 R이며 패킷이 전송 될 때 L/R 초가 걸린다.
 
 store and forward : 라우터에 L bits 전체가 store 된 후 전송하는 방식이다.  
-end-end delay : propagation delay 가 0이라는 가정 하에 그림에서 두번의 링크를 타니까 2xL/R 이다.
+end-end delay : propagation delay 가 0이라는 가정 하에 그림에서 두번의 링크를 타니까 delay 는 2xL/R 이다.
 
-one-hop transmission delay 는 L/R 이다. hop은 link를 뜻하며 위 그림은 two-hop 이다.
+hop : one-hop transmission delay 는 L/R 이다. hop은 link를 뜻하며 위 그림은 two-hop 이다.
 
 ### Queueing delay, loss
 
