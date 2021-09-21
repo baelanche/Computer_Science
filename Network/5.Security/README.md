@@ -11,7 +11,7 @@
   2. worm : 오브젝트를 받기만 했는데 감염
 
 * spyware malware : 키 입력을 기록할 수 있다.
-* botnet : 감염된 호스트들이 만든 네트워크
+* botnet : 감염된 호스트들로 구성된 네트워크
 
 ## Attack server, network infrastructure
 
