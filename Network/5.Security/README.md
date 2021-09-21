@@ -15,6 +15,8 @@
 
 ## Attack server, network infrastructure
 
+![dos](../image/dos.png)
+
 * Denial of Service (DOS) : 소화하지 못할 자원을 전송함으로써 트래픽을 넘치게하여 대상의 자원을 사용하지 못하게 만듦
   1. 타겟 설정
   2. 호스트 근처의 네트워크에 침입한다
