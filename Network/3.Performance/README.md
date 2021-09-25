@@ -1,11 +1,12 @@
 # Performance
 
-* delay, loss, throughput in networks
+* delay
+* loss
+* throughput
 
-손실과 지연은 어떻게 발생하는가?
+## 손실과 지연은 어떻게 발생하는가?
 
-패킷은 라우터 버퍼에 큐된다.
-
+패킷은 라우터 버퍼에 큐(queue)된다.  
 패킷의 arrival rate 가 link capacity 를 초과하면 딜레이가 발생한다.
 
 transmission delay, queueing delay / loss
