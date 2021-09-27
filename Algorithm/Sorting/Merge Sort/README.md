@@ -81,24 +81,24 @@ Merge 할 배열들은 이미 정렬되어 있는 배열이다.
 
 Merge 하는 과정에서 비교횟수는 (r - p) + 1 이다.
 ```
-r = 배열의 마지막 인덱스
-p = 배열의 첫번째 인덱스
+p = 배열의 가장 작은 인덱스
+r = 배열의 가장 큰 인덱스
 ```
 
 여기서 r = 6, p = 1 이므로 n = (r - p) + 1 = 6 이다.
-
----
 
 ### Code
 
 
 
-## Proof : Loop invariants
+## Proof : Loop invariants(merge)
 
-1. Initialization : 루프를 시작할 때 A[p...k-1]
-2. Maintenance : 
-3. Termination : k = r + 1 일때 루프가 종료된다.  
-    r = k - 1 이므로 A[p...k-1] -> A[p...r] 이 된다.
+1. Initialization : 루프를 시작하기 전에 배열은 정렬되어 있는가?
+  * 루프에 들어가기 전에 key 값은 시작 인덱스인 p 이며 이는 sub-array 가 아직 비어있다는 것을 의미한다. 따라서 정렬되어 있다. L, R 배열도 합쳐지기 전 크기 1의 배열이므로 정렬 상태이다.
+2. Maintenance : 루프 중에 배열은 정렬되어 있는가?
+  * L 과 R 의 원소를 차례로 비교하여 가장 작은 원소를 배열 A 에 복사한다. 이 때 A 는 비어있는 상태이므로 값이 추가되어도 정렬되어 있음을 만족한다.
+3. Termination : 루프 종료 후 배열은 정렬되어 있는가?
+  * 종료되는 순간은 k = r + 1 일때이다. 이 때 sub-array A 는 A[p...k-1] 이며 A[p...r] 과 같으므로 merge 가 완료된 상태이다. sub-array 는 이미 정렬된 상태이므로 whole array 도 정렬 상태이다.
     
 ## Running Time
 
