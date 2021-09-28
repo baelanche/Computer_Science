@@ -11,7 +11,7 @@ Recursion 에 기반한 divide-and-conquer 알고리즘을 사용한다.
 ### Divide-and-conquer in Merge sort
 
 * Divide : n 크기의 배열은 n/2 크기의 배열로 나뉜다.
-* Conquer : 나뉜 배열들을 재귀적으로 정렬해나간다. 배열의 크기가 1일때 종료한다.
+* Conquer : 나뉜 배열들을 재귀적으로 분리해나간다. 배열의 크기가 1일때 종료한다.
 * Conbine : 두개의 나뉜 배열들을 병합하여 정렬시킨다.
 
 ## Process
@@ -102,21 +102,42 @@ r = 배열의 가장 큰 인덱스
     
 ## Running Time
 
-input size : n
-T(n) : Running time
+input size : n  
+T(n) : Running time  
 D(n) : divide  
 C(n) : combine
 
-if (n <= c) : n이 constant이다. 다루지 않음
+![merge_time](../../image/merge_time.png)
 
-Best case : n = 1
-Divide : 
-Conquer : 
-Conbine : n
+if (n <= c) : n이 constant이다. (다루지 않음)
 
-Divide step : 길이가 n 일때 트리 형태로 배열이 쪼개질 것이다. 이 때 스텝이 k 일때 배열의 갯수는 2<sup>k</sup> 이다.
-height는 logn 이다.  
-결과적으로 log<sub>2</sub>n + 1 의 단계 , total cost : cn(log<sub>2</sub>n + 1) -> 최고차항만 남긴다. hence, O(nlogn) 이다.
+* Best case : O(1)
+  * 배열의 크기가 1인 경우다.
+* Divide : O(1)
+  * 배열을 반으로 나누는데 걸리는 시간이다. 길이가 어떻든 한번의 시도로 나눌 수 있다.
+* Conquer : 2T(n/2) 
+  * n/2 크기의 배열 2개를 처리해야 한다. 몇 번을 더 나눠야 할지 모르므로 이 단계에서 복잡도를 구할수는 없다.
+* Conbine : C(n) = O(n)
+  * n/2 크기의 배열 2개를 오른쪽으로 인덱싱하며 정렬하면 총 n번의 움직임이 생긴다.
+
+### Running Time : Conquer
+
+![conquer_time](../../image/conquer_time.png)
+
+D(n) = O(1) 이므로 생략 가능하다.
+
+Conquer 의 Running Time 을 구하려면 divide 과정이 몇 번 이루어지는지 알아야한다.  
+1. T(n) -> 2T(n/2)
+2. 2T(n/2) -> 4T(n/4)
+3. 4T(n/4) -> 8T(n/8) ...
+4. T(1) 이 될 때 까지 나눈다.
+
+![recursion_tree](../../image/recursion_tree.png)
+
+* Divide step : 스텝이 k 일때 배열의 갯수는 2<sup>k</sup> 이다.
+* 각 스텝의 총 Running Time 은 C(n) 이다.
+* height는 logn + 1 이다. 상수는 의미가 없으므로 logn 이라 표기된 모습이다.  
+* 결과적으로 log<sub>2</sub>n + 1 x cn , total cost : cn(log<sub>2</sub>n + 1) -> hence, O(nlogn) 이다.
 
 ## Conclusions
 
