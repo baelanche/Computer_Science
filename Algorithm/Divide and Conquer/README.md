@@ -22,7 +22,7 @@
 
 ## Proof : Induction
 
-![merge_sort_induction](../image/merge_sort_induction.png)
+![merge_sort_induction](../image/merge_sort_induction.jpg)
 
 ## The master method
 
