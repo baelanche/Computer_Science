@@ -139,3 +139,16 @@ child write() -> parent read()
   * 여러 프로세스들이 named pipe 를 사용할 수 있다.
   * 프로세스가 종료되어도 named pipe 는 살아있다.
 * 유닉스와 윈도우즈에서 제공한다.
+
+## Remote Procedure Calls (RPCs)
+
+같은 아키텍처를 사용하는 컴퓨터라는 보장이 없다.
+
+### Endianness
+
+* Big-endian : 작은 메모리 번지에 큰 자리의 수 저장(ARM, MIPS, ...)
+  * 캐스팅시 불편한 점이 많다.
+* Little-endian : 작은 메모리 번지에 작은 자리의 수 저장(현대 대부분의 컴퓨터)
+  * 사람이 보는 값 : 0x 01 23 45 67 89 ab cd ef
+  * 저장되는 값    : 0x ef cd ab 89 67 45 23 01
+
