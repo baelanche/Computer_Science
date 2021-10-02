@@ -2,6 +2,10 @@
 
 1. exec
 2. fork
+3. exit
+4. wait
+5. pipe
+6. dup2
 
 ## exec()
 
