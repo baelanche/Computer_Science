@@ -24,7 +24,7 @@
 
 ![merge_sort_induction](../image/merge_sort_induction.jpg)
 
-## The master method
+## Proof : The master method
 
 recurrence 의 솔루션을 찾는 하나의 cookbook 이다.
 
