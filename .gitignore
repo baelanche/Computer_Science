@@ -1,0 +1,10 @@
+# Permanent
+.vs
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+Debug
+
+# Temporary
+*.cpp

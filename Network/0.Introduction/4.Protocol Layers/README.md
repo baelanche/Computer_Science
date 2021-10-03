@@ -40,7 +40,7 @@ application, presentation, session 계층이 합쳐져서 Internet protocol stac
 
 ## Encapsulation
 
-![encap](../image/encap.png)
+![encap](../../image/encap.png)
 
 source 에서 destination 까지 데이터를 전송할 것이다.
 

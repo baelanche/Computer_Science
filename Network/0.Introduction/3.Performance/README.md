@@ -11,7 +11,7 @@
 
 ### Four sources of packet delay
 
-![packet_delay](../image/packet_delay.png)
+![packet_delay](../../image/packet_delay.png)
 
 * processing delay
 * queueing delay
@@ -64,7 +64,7 @@ L/R 을 말한다.
 단위 시간 동안 교환된 데이터의 양을 일컫는다.
 rate(bits/time) bandwidth 가 고정되어 있어도 throughput 은 고정되어 있지 않다.
 
-![throughput](../image/throughput.png)
+![throughput](../../image/throughput.png)
 
 서버에서 F bits 를 클라이언트에 보냈다.  
 1. 첫번째 링크 - Rs - small capacity
@@ -81,7 +81,7 @@ capacity 가 작은 쪽의 link를 bottleneck link라 한다.
 
 #### throughput_internet
 
-![throughput_internet](../image/throughput_internet.png)
+![throughput_internet](../../image/throughput_internet.png)
 
 여러개의 서버, 클라이언트들이 bandwidth를 공유하는 상황이다.  
 10개의 커넥션이 R을 쓰고 있다고 할때, 각 Rc, Rs, ... 들을 10으로 나누고 이 중 가장 작은 것이 throughput 이 된다.  

@@ -22,7 +22,7 @@ host 들은 ISP(Internet Service Provider)를 통해 인터넷에 접속한다. 
 넓은 생태계를 중재해야 하므로 IETF라는 단체에서 Internet Standard를 정의하고 있다.  
 여기서 만든 문서를 RFC라 하며 ietf.org 에서 확인할 수 있다.
 
-![rfc](../image/rfc.png)
+![rfc](../../image/rfc.png)
 
 e.g. RFC에서 Internet Protocol에 대해 정의한 문서
 
@@ -30,13 +30,13 @@ e.g. RFC에서 Internet Protocol에 대해 정의한 문서
 
 ### switch
 
-![switch](../image/switch.png)
+![switch](../../image/switch.png)
 
 일반적으로 Access network에 사용된다. (L3 - local)
 
 ### router
 
-![router](../image/router.png)
+![router](../../image/router.png)
 
 더 안쪽에 있는 Core network에 사용된다. (L2 - Internet)
 
@@ -46,7 +46,7 @@ e.g. RFC에서 Internet Protocol에 대해 정의한 문서
 
 ### Digital subscriber line(DSL)
 
-![dsl](../image/dsl.png)
+![dsl](../../image/dsl.png)
 
 음성, 데이터가 전용회선을 통해 서로 다른 주파수로 central office로 전송된다. 이 office에는 DSLAM으로 가는 전화선이 있다.
   * DSL 전화선을 통을 통한 데이터는 인터넷에 연결된다.
@@ -56,7 +56,7 @@ e.g. RFC에서 Internet Protocol에 대해 정의한 문서
 
 ### Cable network
 
-![cable](../image/cable_network.png)
+![cable](../../image/cable_network.png)
 
 주파수 분할 멀티플렉싱 - 서로 다른 주파수 대역으로 전송되는 다른 채널
   * 비대칭적 : 최대 30Mbps 다운스트림 전송 속도, 2Mbps 업스트림 전송 속도
@@ -67,7 +67,7 @@ e.g. RFC에서 Internet Protocol에 대해 정의한 문서
 
 ### Home network
 
-![home](../image/home_network.png)
+![home](../../image/home_network.png)
 
 -
 
@@ -75,7 +75,7 @@ e.g. RFC에서 Internet Protocol에 대해 정의한 문서
 
 ### Ethernet(Enterprise access networks)
 
-![ethernet](../image/ethernet.png)
+![ethernet](../../image/ethernet.png)
 
 * 일반적으로 회사, 대학 등의 집단에서 사용한다.
 * 10Mbps, 100Mbps, 1Gbps, 10Gbps 등의 전송률을 가졌다.
@@ -93,7 +93,7 @@ shared wireless access network connects end system to router
 
 ## Host
 
-![host](../image/host.png)
+![host](../../image/host.png)
 
 역할 : 데이터 조각(packets)을 보낸다.
 
@@ -104,7 +104,7 @@ host 전송 방식
 
 ### Packet transmission delay
 
-![delay](../image/delay.png)
+![delay](../../image/delay.png)
 
 * link transmission rate / link capacity / link bandwidth
 

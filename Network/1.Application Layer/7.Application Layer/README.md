@@ -35,7 +35,7 @@ application 은 네트워크 core 와는 무관하다. (계층 구조의 장점 
 
 ### Sockets
 
-![socket](../image/socket.png)
+![socket](../../image/socket.png)
 
 * 프로세스들이 메세지를 주고 받을때 소켓을 통해 주고 받는다. (프로세스 사이의 문과 같다)
 * 트랜스포트 계층을 통해 주고 받는다.
@@ -62,7 +62,7 @@ application 은 네트워크 core 와는 무관하다. (계층 구조의 장점 
 
 <br/>
 
-![app_needs](../image/app_needs.png)
+![app_needs](../../image/app_needs.png)
 
 <br/><br/>
 

@@ -10,7 +10,7 @@
 bandwidth 를 공유(shared)하는 방식이다.  
 호스트가 작은 조각인 패킷으로 데이터를 전송하며 데이터를 전송하는 동안만 자원을 사용한다.
 
-![packet_switching](../image/packet_switching.png)
+![packet_switching](../../image/packet_switching.png)
 
 각 패킷은 L bits 를 가졌다.  
 link 의 bandwidth 는 R이며 패킷이 전송 될 때 L/R 초가 걸린다.
@@ -21,7 +21,7 @@ link 의 bandwidth 는 R이며 패킷이 전송 될 때 L/R 초가 걸린다.
 
 ### Queueing delay, loss
 
-![q_d](../image/q_d.png) 
+![q_d](../../image/q_d.png) 
 
 다수의 사용자들이 bandwidth를 공유하기 때문에 패킷스위칭이 단순하게 이루어지지는 않는다.
 
@@ -39,7 +39,7 @@ A, B가 동시에 데이터를 보낸다. 데이터는 섞여져서 전송되게
 
 ## Circuit-switching (dedicated)
 
-![circuit_switching](../image/circuit_switching.png) 
+![circuit_switching](../../image/circuit_switching.png) 
 
 시작지, 도착지 주소 자원을 할당한다.  
 대역폭을 따로 쓰기 때문에 bandwidth 를 사용자별로 나눌 필요가 없다. (큐잉딜레이 안생김, 패킷손실 없음)  
@@ -54,7 +54,7 @@ A, B가 동시에 데이터를 보낸다. 데이터는 섞여져서 전송되게
 
 Frequency Division Multiplexing / Time Division Multiplexing
 
-![fdm_tdm](../image/fdm_tdm.png)
+![fdm_tdm](../../image/fdm_tdm.png)
 
 * FDM : 주파수를 쪼개서 사용자별로 분배한다. 아날로그 방식에서 주로 사용한다.
 * TDM : 시간별로 유저에게 주파수를 할당한다. 아날로그 방식으로는 불가능하며 디지털 방식에서 사용한다.
@@ -92,13 +92,13 @@ users : 100 kb/s, active 10% of time
 노드들을 연결해주는 ISP는 어떤식으로 연결해주는가? ISP를 여러개 만들것인가, 한개만 만들것인가?  
 이런 물음들은 재정적 문제와 국가의 협약에 결정되는 부분이 크다.
 
-![isp](../image/isp.png)
+![isp](../../image/isp.png)
 
 ### Q) 수백만개의 access network를 ISP는 어떻게 연결하나?
 
 <br/><br/><br/>
 
-![isp_answer](../image/isp_answer.png)
+![isp_answer](../../image/isp_answer.png)
 
 ### A1)  
 O(N^2) 개의 연결을 할 수 있다.  
@@ -107,7 +107,7 @@ O(N^2) 개의 연결을 할 수 있다.
 
 <br/><br/><br/>
 
-![isp_answer2](../image/isp_answer2.png)
+![isp_answer2](../../image/isp_answer2.png)
 
 ### A2)
 global ISP 를 중앙에 둔다. ISP 는 그대로 두면서 access network 가 생겨나면 하나씩 붙인다.  
@@ -116,7 +116,7 @@ global ISP 가 전세계에 한개만 있는 것이 불가능 한건 아니다. 
 
 <br/><br/><br/>
 
-![isp_answer3](../image/isp_answer3.png)
+![isp_answer3](../../image/isp_answer3.png)
 
 ### A3)  
 global ISP 가 3개가 있는 모습이다. IXP 라는 router 를 통해 ISP 를 연결하였으며 regional newtork 라는 지역의 네트워크들을 묶는  
@@ -124,7 +124,7 @@ global ISP 가 3개가 있는 모습이다. IXP 라는 router 를 통해 ISP 를
 
 <br/><br/><br/>
 
-![isp_answer4](../image/isp_answer4.png)
+![isp_answer4](../../image/isp_answer4.png)
 
 ### A4)
 자연스레 레이어별 ISP들이 설계되었다.
