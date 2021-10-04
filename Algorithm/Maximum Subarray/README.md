@@ -21,14 +21,36 @@ divide 0 : A[1...n] = A[low...high]
 
 ### Combine : cross the midpoint
 
-A[low...mid], A[mid+1...high] 로 나뉘어진 상황에서 중심에서 발생하는 최대 구간합을 찾아보자.
-
 ![midpoint](https://user-images.githubusercontent.com/48989903/135854280-cc89e722-0eb8-4435-9742-cf3f627587fd.png)
 
-
-1. mid-subarray 의 범위는 A[i...mid], A[mid+1...j] 이다.
+1. mid-subarray 의 범위는 A[low...mid], A[mid+1...high] 이다.
 2. 두 배열에서 각각 최대 구간합을 구한다.
 3. 두 수를 더한다.
 
+최악의 경우 배열을 모두 훑으므로 시간복잡도는 O(n) 이다.
+
 ## Process
 
+![maximum_subarray](https://user-images.githubusercontent.com/48989903/135856840-68d0e4a4-ead2-469d-9e80-14d9d9be6f05.png)
+
+## Runtime
+
+* Base case : if low == high : n = 1 인 경우, T(n) = O(1)
+* Recursive case : n 이 1 보다 클 경우
+  * divide : O(1)
+  * conquer : 두 subarray 의 크기가 n/2 이므로, 2T(n/2)
+  * combine : O(n)[cross the midpoint] + O(1)[max(left, right, cross)]
+
+T(n) = O(1) + 2T(n/2) + O(n) + O(1) = 2T(n/2) + O(n)
+
+### Proof : Master theory
+
+```
+a : 2  
+b : 2  
+f(n) : n
+```
+
+f(n)/n<sup>log<sub>b</sub>a</sup> = 1, 따라서 case 2
+
+O(n) = n<sup>log<sub>b</sub>a</sup> x logn = nlogn
