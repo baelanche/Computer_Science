@@ -138,13 +138,12 @@ HTTP 는 stateless 이므로 connection closed 됐을 때 기록을 모두 잃�
 
 ![cache_prob3](https://user-images.githubusercontent.com/48989903/136008099-d5f2336f-c463-4827-b5b7-2a241dfb36da.png)
 
-* server 에 web cache 를 설치한다. -> 싸다
-
-* cache hit rate 는 0.4 라고 하자.
+* server 에 web cache 를 설치한다. -> 싸다  
+* cache hit rate 는 0.4 라고 하자.  
   * 40% 는 cache 에 있고 60% 는 origin 에 있다.
-* access link utilization : 60%
-* data rate to browser : 0.6 x 1.5Mbps = 9Mbps
-* total delay : 0.6 x (delay from origin) + 0.4 x (cache) = 0.6 x 2.01 + 0.4 x (작은 수) = 약 1.2secs
+* access link utilization : 60%  
+* data rate to browser : 0.6 x 1.5Mbps = 9Mbps  
+* total delay : 0.6 x (delay from origin) + 0.4 x (cache) = 0.6 x 2.01 + 0.4 x (작은 수) = 약 1.2secs  
 * cache 를 통해 Internet delay 를 0 에 가까이 줄여서 solution 1 보다 속도가 좋아졌다.
 
 ### Conditional GET
