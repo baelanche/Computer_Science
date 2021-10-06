@@ -71,12 +71,12 @@ int main() {
   pid_t pid;
   int status;
   if ((pid = fork()) == 0) {
-		execvp(c[0], c);
-		fprintf(stderr, "Unable to execute %s\n", c[0]);
-		exit(0);
-	} else {
-		waitpid(pid, &status, 0);
-	}
+    execvp(c[0], c);
+    fprintf(stderr, "Unable to execute %s\n", c[0]);
+    exit(0);
+  } else {
+    waitpid(pid, &status, 0);
+  }
 }
 ```
 
