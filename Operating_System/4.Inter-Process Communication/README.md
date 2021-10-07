@@ -142,13 +142,32 @@ child write() -> parent read()
 
 ## Remote Procedure Calls (RPCs)
 
-같은 아키텍처를 사용하는 컴퓨터라는 보장이 없다.
+다른 컴퓨터와의 통신.  
+원격 컴퓨터를 함수를 호출함으로써 부르는 형태를 일컫는다.  
+
+![rpc](https://user-images.githubusercontent.com/48989903/136337887-fe59d64b-7b60-4294-b094-cb760606b290.png)
+
+1. 서버에 구현된 함수가 있다.
+2. RPC layer 에 등록한다.
+3. 클라이언트에서는 함수를 호출한다.
+4. 이 함수를 `stub` 이라고 하며 이 것을 통해 layer 를 타고 함수를 호출한다.
+5. 결과값은 RPC layer 를 통해서 클라이언트로 전송된다.
+
+### External Data Representation (XDR)
+
+* 서로 다른 아키텍처 사이에서 데이터 표현을 다루는 것을 말한다.
+* RPC layer 는 중립적인 데이터 표현을 한다.  
+* layer 가 읽는 데이터가 빅 엔디언이면 그대로 읽고, 리틀 엔디언이면 거꾸로 읽는다.
 
 ### Endianness
 
+![endian](https://user-images.githubusercontent.com/48989903/136337962-ce0b2d82-e9bd-42a0-b025-fe9800a38fb4.png)
+
 * Big-endian : 작은 메모리 번지에 큰 자리의 수 저장(ARM, MIPS, ...)
+  * 사람이 보는 값 : 0x 01 23 45 67 89 ab cd ef
+  * 저장되는 값    : 0x 01 23 45 67 89 ab cd ef 
   * 캐스팅시 불편한 점이 많다.
 * Little-endian : 작은 메모리 번지에 작은 자리의 수 저장(현대 대부분의 컴퓨터)
   * 사람이 보는 값 : 0x 01 23 45 67 89 ab cd ef
   * 저장되는 값    : 0x ef cd ab 89 67 45 23 01
-
+  * short s = (short)(0x ef cd ab 89 67 45 23 01) = 0x ef cd
