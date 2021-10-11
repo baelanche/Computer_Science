@@ -3,23 +3,28 @@
 ![components](https://user-images.githubusercontent.com/48989903/136718597-d0891977-e308-4c53-8f65-50dbeca33d4b.png)
 
 ### Components
+
 * user agents
 * mail servers
 * SMTP
 
 #### User agents
+
 * 메일을 읽고 쓴다.
 
 #### Mail servers
+
 * 도착한 메일을 mailbox 에 보관한다.
 * 보낼 메일을 message queue 에 보관한다.
 
 #### SMTP
+
 * mail servers 사이에 존재
 * 클라이언트 : 메세지를 전송한다
 * 서버 : 메세지를 받는다
 
 ## SMTP
+
 * TCP
 * 3개의 과정을 통해 전송한다.
   * handshaking
@@ -43,6 +48,7 @@
 6. Bob 은 메일을 수령한다.
 
 ### SMTP vs HTTP
+
 * HTTP : pull (서버의 내용을 가져옴)
 * SMTP : push (서버에 내용을 보냄)
 * 둘다 ASCII 형태의 command/response, status codes
@@ -64,18 +70,21 @@ User agent 가 mail server 로 부터 메일을 받아올 때 사용하는 프�
 
 ## POP3
 
-#### authorization
+#### authorization phase
+
 * client : user, pass
 * server : +OK, -ERR
 
-#### transaction : client
+#### transaction phase : client
+
 * list : 리스트 형태로 출력
 * retr : 인덱스를 통해 메일 받아옴
 * dele : 삭제
 * quit
+<br/>
 
-* 메일을 삭제하면 다시 복구할 수 없다.
-* 메일을 PC에 받아서 보는 'download-and-keep' 이다.
+* 메일을 삭제하면 다시 복구할 수 없다.  
+* 메일을 PC에 받아서 보는 'download-and-keep' 이다.  
 * stateless
 
 ## IMAP
