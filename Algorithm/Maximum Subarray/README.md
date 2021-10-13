@@ -43,7 +43,7 @@ divide 0 : A[1...n] = A[low...high]
 
 T(n) = O(1) + 2T(n/2) + O(n) + O(1) = 2T(n/2) + O(n)
 
-### Proof : Master theory
+### Proof : Master theorem
 
 ```
 a : 2  
