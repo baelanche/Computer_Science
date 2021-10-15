@@ -136,12 +136,20 @@
   * shared resource 를 점유한 시점에 그 task 의 priority 를 대폭 늘림으로써 inversion 방지
   * priority 를 얼마나 늘려야할지 애매하다는 단점이 있다.
 
-## Round Robin
+## RR : Round Robin
 
-모든 운영체제 스케줄링의 fundamental
+거의 모든 스케줄링의 fundamental 한 역할을 하는 스케줄링 방식이다.
 
-time slice
-preemptive
-no starvation
-improve response time : great for time-sharing
-not good waiting time
+각 job 은 time slice 를 받는다.
+ * time slice too short : 오버헤드가 높다
+ * time slice too long : long response time
+ * 일반적으로 10 ~ 100ms
+
+![round_robin](https://user-images.githubusercontent.com/48989903/137451454-2fa560e5-fb7d-4330-bfd7-d44bba0b0375.png)
+
+Characteristic
+ * time slice
+ * preemptive
+ * no starvation
+ * improve response time : great for time-sharing
+ * not good waiting time
