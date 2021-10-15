@@ -94,16 +94,14 @@ T(n) = 2T(n/2) + O(n) = O(nlogn) // O(n) : partitioning
 * unbalanced 
 * 크기가 0 & n-1 로 분리되었을 경우
 
-```
-T(n) = T(n-1) + T(0) + O(n)
-     = T(n-1) + O(n)
-     = O(n<sup>2</sup>)
-/*
-telescoping
-T(n) = T(n-1) + n
-T(n-1) = T(n-2) + n-1, T(n) 에 대입
-T(n) = T(n-2) + n-1 + n
+T(n) = T(n-1) + T(0) + O(n)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= T(n-1) + O(n)  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= O(n<sup>2</sup>)
+
+#### telescoping
+
+T(n) = T(n-1) + n  
+T(n-1) = T(n-2) + n-1, T(n) 에 대입  
+T(n) = T(n-2) + n-1 + n  
 T(n) = T(n-3) + n-2 + n-1 + n
 ...
-*/
-```
