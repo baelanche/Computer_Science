@@ -74,7 +74,7 @@ PRINT-LCS(b, X, i, j)
     return
   if b[i, j] == ↖
     PRINT-LCS(b, X, i-1, j-1)
-    print c[i, j]
+    print x[i]
   else if b[i, j] == ←
     PRINT-LCS(b, X, i-1, j)
   else PRINT-LCS(b, X, i, j-1)
@@ -84,9 +84,12 @@ PRINT-LCS(b, X, i, j)
 
 Q) 왜 인풋으로 X 배열을 사용할까?
 
+A) x[i] 대신 y[j] 를 출력하여도 무방하다.
+
 ## Performance
 
-* LCS compute time complexity : O(mn)
+* Time complexity - LCS compute : O(mn)
   * 이중 루프로 c[1...m, 1...n] 의 인덱스를 채우므로 O(mn) 이다.
-* LCS print time complexity : O(m+n)
+* Time complexity - LCS print : O(m+n)
   * m, n 이 0 이 될때까지 이므로 O(m+n) 이다.
+* Space complexity : O(mn)
