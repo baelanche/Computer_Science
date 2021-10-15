@@ -135,3 +135,13 @@
 #### * Priority Ceiling Protocol(PCP)
   * shared resource 를 점유한 시점에 그 task 의 priority 를 대폭 늘림으로써 inversion 방지
   * priority 를 얼마나 늘려야할지 애매하다는 단점이 있다.
+
+## Round Robin
+
+모든 운영체제 스케줄링의 fundamental
+
+time slice
+preemptive
+no starvation
+improve response time : great for time-sharing
+not good waiting time
