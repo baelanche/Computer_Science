@@ -62,3 +62,31 @@ Goal : optimal solution 을 계산한다.
 ### 4. Coding
 
 Goal : 계산된 결과를 통해 optimal solution 을 세운다.
+
+## Print LCS
+
+* 2-dimension array C : length of LCS of X and Y
+* 2-dimension array B : pointers to optimal subproblem solutions
+ 
+```.c
+PRINT-LCS(b, X, i, j)
+  if i == 0 or j == 0
+    return
+  if b[i, j] == ↖
+    PRINT-LCS(b, X, i-1, j-1)
+    print c[i, j]
+  else if b[i, j] == ←
+    PRINT-LCS(b, X, i-1, j)
+  else PRINT-LCS(b, X, i, j-1)
+```
+
+재귀의 방향이 역순이므로 PRINT-LCS 는 정방향의 문자열이 출력된다.
+
+Q) 왜 인풋으로 X 배열을 사용할까?
+
+## Performance
+
+* LCS compute time complexity : O(mn)
+  * 이중 루프로 c[1...m, 1...n] 의 인덱스를 채우므로 O(mn) 이다.
+* LCS print time complexity : O(m+n)
+  * m, n 이 0 이 될때까지 이므로 O(m+n) 이다.
