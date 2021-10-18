@@ -13,6 +13,16 @@
 * Divide-and-Conquer : 작은 문제들로 반복적으로 쪼개며 독립적으로 해결한 후 원 문제로 합쳐서 해결한다.
 * Dynamic Programming : 작은 문제들로 반복적으로 쪼개며 해결한 값들을 테이블에 저장하여 원 문제에 활용하여 해결한다.
 
+## Proof : cut and paste
+
+올바른 optimal solution 을 세웠는지 증명한다.
+
+* subproblem solution 이 not optimal 이라고 가정한다.
+* non-optimal 을 제거하고 optimal solution 을 붙이면 더 좋은 결과를 얻는다.
+* 따라서, 이전의 optimal solution 은 optimal solution 일 수 없다.
+
+optimal solution 을 가진다는 것은 optimal subproblem solution 으로 구성되었다는 것을 활용한 증명방식이다.
+
 ## Problem
 
 Dynamic programming 기법은 다양한 문제 해결에 적용할 수 있다. 그 중 유명한 문제 몇가지에 적용시켜 보고자 한다.
