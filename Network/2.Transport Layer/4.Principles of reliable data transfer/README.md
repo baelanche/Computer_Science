@@ -114,9 +114,54 @@
   * 1 Gbps link 에서 매 30 msec 마다 1KB 의 패킷이 33kB/sec 의 throughput 을 보여준다.
   * 사용률이 매우 떨어진다.
 
-### Pipelined protocols
+## Pipelined protocols
 
 * sender 는 동시에 여러개의 패킷을 보낸다.
 * generic forms : go-Back-N, selective repeat
 
 ![better_utilization](https://user-images.githubusercontent.com/48989903/137725255-c5ff86f2-9f0c-44a4-85c7-aca493b5db9d.png)
+
+### Go-back-N
+
+* sender 는 n 개의 패킷을 파이프라인을 통해 보낸다.
+* receiver 는 cumulative ack 를 보낸다. (아래에 설명)
+* sender 는 가장 오래된 패킷에 대해 타이머를 가진다.
+  * 타이머가 만료되면 윈도우의 모든 패킷을 재전송한다.
+
+![go_back_n](https://user-images.githubusercontent.com/48989903/137856052-3494f5b6-bdfa-4bd2-9363-b4179eef2d4f.png)
+
+* 초록색 : ACK 를 받은 패킷
+* 노란색 : 보냈지만 ACK 를 아직 못받은 패킷
+* 파란색 : 아직 보내지 않은 패킷
+
+<br/>
+
+![go_back_n_prog](https://user-images.githubusercontent.com/48989903/137857640-3d4e110b-1117-43b9-be2f-fbcb0f8d6c81.png)
+
+<br/>
+
+* #### sender
+  * ACK 를 받은 패킷은 윈도우에서 제외하고 다음 패킷을 윈도우에 포함시킨다.
+
+<br/>
+
+* #### receiver
+  * 올바르게 받은 패킷 중 가장 높은 sequence 에 대해서 ACK 를 보낸다. (if send 10, 11 error, 12 then ACK = 10)
+
+<br/>
+
+### Selective Repeat
+
+* sender 는 n 개의 패킷을 파이프라인을 통해 보낸다.
+* receiver 는 각 패킷에 대해 ack 를 보낸다.
+* sender 는 각 패킷에 대해 타이머를 유지한다.
+  * 타이머가 만료되면 해당 패킷을 재전송한다.
+* sender 는 ACK 가 오지 않은 패킷에 대해 재전송한다.
+
+![selective_repeat_prog](https://user-images.githubusercontent.com/48989903/137858709-23c3461a-f1b7-4fb8-a5ac-d69bd0fac50e.png)
+
+### Dilemma
+
+![selective_repeat_d1](https://user-images.githubusercontent.com/48989903/137858959-8f2cc485-9bc7-4a3b-8f78-058f7fd8f846.png)
+
+* receiver 가 ACK 했지만 유실되었을 경우 다시 오는 패킷 0 번을 구분할 수 없다.
