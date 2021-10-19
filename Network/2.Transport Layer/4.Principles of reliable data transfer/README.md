@@ -162,6 +162,16 @@
 
 ### Dilemma
 
+![selective_repeat_d2](https://user-images.githubusercontent.com/48989903/137865321-31cf52ff-030e-4c7b-b741-7e60f10d3555.png)
+
+* 한정된 패킷 순서번호를 사용할 때 패킷이 손실된 경우
+  * sender 는 패킷 0, 1, 2 를 보낸다.
+  * receiver 가 ACK 0 을 보내자 sender 는 패킷 3 을 보냈지만 손실되었다.
+  * receiver 가 ACK 1 을 보내자 sender 는 패킷 0 을 보냈다.
+  * receiver 는 패킷 3 을 받은 적이 없으므로 새로온 패킷 0 이 재전송인지 새로 전송된 건지 알 수 없다.
+
 ![selective_repeat_d1](https://user-images.githubusercontent.com/48989903/137858959-8f2cc485-9bc7-4a3b-8f78-058f7fd8f846.png)
 
-* receiver 가 ACK 했지만 유실되었을 경우 다시 오는 패킷 0 번을 구분할 수 없다.
+* 한정된 패킷 순서번호를 사용할 때 ACK 가 손실된 경우
+  * receiver 의 ACK 가 도착하지 않으면 sender 는 패킷을 재전송한다.
+  * receiver 는 윈도우를 옮긴 상태이므로 받은 패킷이 재전송인지 새로 전송된 건지 알 수 없다.
