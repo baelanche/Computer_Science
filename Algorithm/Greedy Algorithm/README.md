@@ -9,3 +9,6 @@ dp, divde and conquer 와 달리 문제를 쪼개서 풀어내는 알고리즘�
 * Feasibility check : 특정 해를 고르는 것이 가능한 상황인지 판단한다.
 * Solution check : 해의 집합이 최적의 해인지 판단한다.
 
+## Problem
+
+1. [Activity Selection](https://github.com/baelanche/Computer_Science/blob/master/Algorithm/Greedy%20Algorithm/Activity%20Selection.md)
