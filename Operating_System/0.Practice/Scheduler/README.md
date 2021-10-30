@@ -51,9 +51,117 @@ void (*release)(int);
 
 ### 1. SJF
 
+* task 의 처리시간이 짧은것을 우선으로 처리한다.
+
+```.c
+static struct process *sjf_schedule(void)
+ {
+         struct process *next = NULL;
+         struct process *ptr;
+         int min = 9999;
+
+         if (!current || current->status == PROCESS_WAIT) {
+                 goto pick_next;
+         }
+         if (current->age < current->lifespan) {
+                 return current;
+         }
+
+ pick_next:
+         if (!list_empty(&readyqueue)) {
+                 list_for_each_entry(ptr, &readyqueue, list) {
+                         if (ptr->lifespan < min) {
+                                 min = ptr->lifespan;
+                                 next = ptr;
+                         }
+                 }
+                 list_del_init(&next->list);
+         }
+         return next;
+ }
+```
+
+* 현재 실행중인 task 가 없다 -> 최소시간의 task 를 스케줄링한다.
+* 현재 실행중인 task 가 있다 -> task 를 마칠때까지 계속 수행한다.
+
 ### 2. SRTF
 
+* task 의 처리시간이 짧은것을 우선으로 처리한다.
+* 새로운 task 가 도착하면 처리시간이 짧은 task 를 다시 찾는다.
+
+```.c
+static void srtf_forked(struct process *new)
+ {
+         if(current) {
+                 if(new->lifespan < current->age+1) {
+                         list_add(&current->list, &readyqueue);
+                         list_del_init(&new->list);
+                         current = new;
+                 }
+         }
+ }
+
+static struct process *srtf_schedule(void)
+ {
+         struct process *next = NULL;
+         struct process *ptr;
+         int min = 9999;
+
+         if (!current || current->status == PROCESS_WAIT) {
+                 goto pick_next;
+         }
+         if (current->age < current->lifespan) {
+                 return current;
+         }
+
+ pick_next:
+         if (!list_empty(&readyqueue)) {
+                 list_for_each_entry(ptr, &readyqueue, list) {
+                         if (ptr->lifespan < min) {
+                                 min = ptr->lifespan;
+                                 next = ptr;
+                         }
+                 }
+                 list_del_init(&next->list);
+         }
+         return next;
+ }
+```
+
+* 새로 들어온 task 가 있다면 현재 처리중인 task 와 remaining time 을 비교하여 짧은 task 를 선택한다.
+* 현재 실행중인 task 가 없다 -> 최소시간의 task 를 스케줄링한다.
+* 현재 실행중인 task 가 있다 -> task 를 마칠때까지 계속 수행한다.
+
 ### 3. RR
+
+* 모든 task 를 특정 quantum 만큼 실행한다.
+  * quantum 이 1이라면 모든 task 를 1만큼 돌아가면서 수행한다.
+
+```.c
+static struct process *rr_schedule(void)
+ {
+         struct process *next = NULL;
+
+         if (!current || current->status == PROCESS_WAIT) {
+                 goto pick_next;
+         }
+
+         if (current->age < current->lifespan) {
+                 list_add_tail(&current->list, &readyqueue);
+         }
+
+ pick_next:
+
+         if (!list_empty(&readyqueue)) {
+                 next = list_first_entry(&readyqueue, struct process, list);
+                 list_del_init(&next->list);
+         }
+         return next;
+ }
+```
+
+* 현재 처리중인 task 가 없다면 큐의 첫번째 task 를 실행한다.
+* 현재 처리중인 task 가 있다면 큐의 마지막에 집어넣고 큐의 첫번째 task 를 실행한다.
 
 ### 4. Priority
 
