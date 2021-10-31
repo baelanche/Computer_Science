@@ -165,6 +165,11 @@ static struct process *rr_schedule(void)
 
 ### 4. Priority
 
+* 프로세스의 Priority 가 높으면 먼저 처리한다.
+* resource acquire/release 개념이 도입되어 상위 priority 를 가진 프로세스의 처리가 하위 프로세스에게 밀릴 수 있다.
+
+
+
 ### 5. Priority + Aging
 
 ### 6. Priority + PIP
