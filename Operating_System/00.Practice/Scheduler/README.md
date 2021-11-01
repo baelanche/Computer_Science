@@ -166,9 +166,94 @@ static struct process *rr_schedule(void)
 ### 4. Priority
 
 * 프로세스의 Priority 가 높으면 먼저 처리한다.
-* resource acquire/release 개념이 도입되어 상위 priority 를 가진 프로세스의 처리가 하위 프로세스에게 밀릴 수 있다.
+* resource acquire/release 개념이 도입되어 상위 priority 를 가진 프로세스의 처리가 하위 프로세스에게 밀릴 수 있다. (Priority Inversion)
 
+```.c
+bool prio_acquire(int resource_id)
+ {
+         struct resource *r = resources + resource_id;
+         if (!r->owner) {
+                 r->owner = current;
+                 return true;
+         }
 
+         current->status = PROCESS_WAIT;
+         list_add_tail(&current->list, &r->waitqueue);
+         return false;
+ }
+
+ void prio_release(int resource_id)
+ {
+         struct resource *r = resources + resource_id;
+         struct process *ptr;
+         struct process *head;
+
+         assert(r->owner == current);
+         r->owner = NULL;
+
+         if (!list_empty(&r->waitqueue)) {
+                 struct process *waiter =
+                                 list_first_entry(&r->waitqueue, struct process, list);
+                 list_for_each_entry_safe(ptr, head, &r->waitqueue, list) {
+                         if (waiter->prio < ptr->prio)
+                                 waiter = ptr;
+                 }
+                 assert(waiter->status == PROCESS_WAIT);
+                 list_del_init(&waiter->list);
+                 waiter->status = PROCESS_READY;
+                 list_add_tail(&waiter->list, &readyqueue);
+         }
+ }
+static struct process *prio_schedule(void)
+ {
+         struct process *next = NULL;
+         struct process *ptr;
+         struct process *head;
+         int max_prio = 0;
+
+         if (!current || current->status == PROCESS_WAIT) {
+                 goto pick_next;
+         }
+         if (current->age < current->lifespan) {
+                 if (!list_empty(&readyqueue)) {
+                         list_for_each_entry_safe(ptr, head, &readyqueue, list) {
+                                 if (current->prio < ptr->prio) {
+                                         list_add(&current->list, &readyqueue);
+                                         current = ptr;
+                                         list_del_init(&current->list);
+                                 }
+                         }
+                 }
+                 return current;
+         }
+
+ pick_next:
+         if (!list_empty(&readyqueue)) {
+                 list_for_each_entry_reverse(ptr, &readyqueue, list) {
+                         if (ptr->prio >= max_prio) {
+                                 max_prio = ptr->prio;
+                                 next = ptr;
+                         }
+                 }
+                 list_del_init(&next->list);
+         }
+         return next;
+ }
+```
+
+1. 먼저 프로세스가 fork 된다. 이때 별도의 처리는 없다.
+2. schedule() 함수가 실행된다.
+   * 현재 처리중인 프로세스가 없다 : priority 가 높은 프로세스가 running 프로세스가 된다.
+   * 현재 처리중인 프로세스가 있다 : 현재 프로세스보다 priority 가 높은 프로세스가 있다면 이 프로세스가 current 프로세스가 된다.
+3. current 프로세스에 한해서 acquire() 함수가 실행된다.
+   * 자원을 점유하는 프로세스가 없다 : 현재 프로세스가 자원을 점유한다.
+   * 자원을 점유하는 프로세스가 있다 : priority 에 관계없이 이 프로세스는 대기 상태가 된다. (Priority Inversion 이 발생할 수 있다)
+4. 특정 프로세스의 자원 점유가 끝나면 release() 함수가 실행된다.
+   * 대기중인 프로세스 중 priority 가 가장 높은 프로세스가 자원을 점유한다.
+
+> 여기서 기억할 것  
+> list_for_each_entry() : 리스트를 순위하다가 리스트를 지우면 리스트 순회를 멈춘다.  
+> list_for_each_entry_safe() : 리스트 멤버를 지워도 계속 순회한다.
 
 ### 5. Priority + Aging
 
