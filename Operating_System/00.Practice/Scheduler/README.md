@@ -257,6 +257,11 @@ static struct process *prio_schedule(void)
 
 ### 5. Priority + Aging
 
+* 프로세스의 Priority 가 높으면 먼저 처리한다.
+* resource acquire/release 개념이 도입되어 상위 priority 를 가진 프로세스의 처리가 하위 프로세스에게 밀릴 수 있다. (Priority Inversion)
+* 순서가 오지 않은 프로세스들에 한해 priority 를 점차 늘려준다.
+* 새로운 프로세스가 처리되게 되면 이 프로세스의 priority 는 초기화된다.
+
 ### 6. Priority + PIP
 
 ### 7. Priority + PCP
