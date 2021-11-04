@@ -262,6 +262,79 @@ static struct process *prio_schedule(void)
 * 순서가 오지 않은 프로세스들에 한해 priority 를 점차 늘려준다.
 * 새로운 프로세스가 처리되게 되면 이 프로세스의 priority 는 초기화된다.
 
+```.c
+static struct process *pa_schedule(void)
+ {
+         struct process *next = NULL;
+         struct process *ptr;
+         struct process *head;
+         int max_prio = 0;
+         int age = 0;
+
+         if (!current || current->status == PROCESS_WAIT) {
+                 goto pick_next;
+         }
+         if (current->age < current->lifespan) {
+                 if (!list_empty(&readyqueue)) {
+                         list_for_each_entry_safe(ptr, head, &readyqueue, list) {
+                                 ptr->prio = ptr->prio + 1;
+                                 if (ptr->prio > MAX_PRIO) ptr->prio = MAX_PRIO;
+                                 if (ptr->prio >= max_prio) {
+                                         max_prio = ptr->prio;
+                                         next = ptr;
+                                 }
+                         }
+                         if (current->prio >= next->prio) return current;
+                         list_add(&current->list, &readyqueue);
+                         current->prio = current->prio + 1;
+                         current = next;
+                         list_del_init(&next->list);
+                         current->prio = current->prio_orig;
+                         return current;
+                 }
+         }
+
+ pick_next:
+         if (!list_empty(&readyqueue)) {
+                 list_for_each_entry(ptr, &readyqueue, list) {
+                         ptr->prio = ptr->prio + 1;
+                         if (ptr->prio > MAX_PRIO) ptr->prio = MAX_PRIO;
+                 }
+         }
+
+         if (!list_empty(&readyqueue)) {
+                 list_for_each_entry_reverse(ptr, &readyqueue, list) {
+                         if (ptr->prio > max_prio) {
+                                 max_prio = ptr->prio;
+                                 age = ptr->age;
+                                 next = ptr;
+                         } else if (ptr->prio == max_prio) {
+                                 if (ptr->age < age)
+                                         next = ptr;
+                         }
+                 }
+                 list_del_init(&next->list);
+                 next->prio = next->prio_orig;
+         }
+
+         if (current && next == NULL) {
+                 if (list_empty(&readyqueue) && current->age < current->lifespan)
+                         return current;
+                 else if (list_empty(&readyqueue) && current->age == current->lifespan) return NULL;
+         }
+
+         return next;
+ }
+```
+
+1. 스케줄링 할때마다 큐의 모든 프로세스 priority 가 1씩 증가한다.
+2. priority 가 증가하고 나서 현재 처리중인 프로세스와 큐의 프로세스의 priority 를 비교하여 어느 프로세스를 처리할지 결정한다.
+3. 만약 큐의 프로세스 중 후보가 2개 이상이라면
+   * 프로세스의 처리횟수가 같다면 큐에서 앞자리에 해당하는 프로세스를 처리한다.
+   * 프로세스의 처리횟수가 다르다면 처리횟수가 적은 프로세스를 처리한다.
+
+레디큐에 프로세스가 없을 때의 로직이 중간과정에 잘 구현되어있지 않아 마지막에 급하게 처리해주었다. (bad code)
+
 ### 6. Priority + PIP
 
 ### 7. Priority + PCP
