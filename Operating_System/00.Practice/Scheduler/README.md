@@ -7,8 +7,8 @@
 3. RR (Round Robin)
 4. Priority
 5. Priority + Aging
-6. Priority + PIP (Priority Inheritance Protocol)
-7. Priority + PCP (Priority Ceiling Protocol)
+6. Priority + PCP (Priority Ceiling Protocol)
+7. Priority + PIP (Priority Inheritance Protocol)
 
 ## struct scheduler
 
@@ -337,7 +337,87 @@ static struct process *pa_schedule(void)
 
 레디큐에 프로세스가 없을 때의 로직이 중간과정에 잘 구현되어있지 않아 마지막에 급하게 처리해주었다. (bad code)
 
-### 6. Priority + PIP
+### 6. Priority + PCP
 
-### 7. Priority + PCP
+```.c
+bool pcp_acquire(int resource_id)
+ {
+         struct resource *r = resources + resource_id;
+         if (!r->owner) {
+                 r->owner = current;
+                 current->prio = MAX_PRIO;
+                 return true;
+         }
+
+         current->status = PROCESS_WAIT;
+         list_add_tail(&current->list, &r->waitqueue);
+         return false;
+ }
+
+void pcp_release(int resource_id)
+ {
+         struct resource *r = resources + resource_id;
+         struct process *ptr;
+         struct process *head;
+
+         assert(r->owner == current);
+         r->owner->prio = r->owner->prio_orig;
+         r->owner = NULL;
+
+         if (!list_empty(&r->waitqueue)) {
+                 struct process *waiter =
+                                 list_first_entry(&r->waitqueue, struct process, list);
+                 list_for_each_entry(ptr, &r->waitqueue, list) {
+                         if (waiter->prio < ptr->prio)
+                                 waiter = ptr;
+                 }
+                 assert(waiter->status == PROCESS_WAIT);
+                 list_del_init(&waiter->list);
+                 waiter->status = PROCESS_READY;
+                 list_add_tail(&waiter->list, &readyqueue);
+         }
+ }
+ 
+static struct process *pcp_schedule(void)
+ {
+         struct process *next = NULL;
+         struct process *ptr;
+         struct process *head;
+         int max_prio = 0;
+
+         if (!current || current->status == PROCESS_WAIT) {
+                 goto pick_next;
+         }
+         if (current->age < current->lifespan) {
+                 if (!list_empty(&readyqueue)) {
+                         list_for_each_entry_safe(ptr, head, &readyqueue, list) {
+                                 if (current->prio <= ptr->prio) {
+                                         list_add(&current->list, &readyqueue);
+                                         current = ptr;
+                                         list_del_init(&current->list);
+                                 }
+                         }
+                 }
+                 return current;
+         }
+
+ pick_next:
+         if (!list_empty(&readyqueue)) {
+                 list_for_each_entry_reverse(ptr, &readyqueue, list) {
+                         if (ptr->prio >= max_prio) {
+                                 max_prio = ptr->prio;
+                                 next = ptr;
+                         }
+                 }
+                 list_del_init(&next->list);
+         }
+         return next;
+ }
+```
+
+1. priority 가 가장 큰 프로세스가 current 프로세스가 된다.
+2. 자원을 점유하는 순간에 priority 를 대폭 증가시켜 다른 프로세스에게 탈취당하지 않도록 한다.
+3. 자원 점유를 해제하는 순간에 priority 를 원래대로 돌린다.
+
+### 7. Priority + PIP
 
