@@ -339,6 +339,9 @@ static struct process *pa_schedule(void)
 
 ### 6. Priority + PCP
 
+* priority 순으로 통상 처리한다.
+* 특정 프로세스가 자원을 점유하면 priority 를 대폭 증가시켜 자원 탈취를 막는다.
+
 ```.c
 bool pcp_acquire(int resource_id)
  {
