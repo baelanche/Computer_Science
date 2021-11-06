@@ -252,7 +252,7 @@ static struct process *prio_schedule(void)
    * 대기중인 프로세스 중 priority 가 가장 높은 프로세스가 자원을 점유한다.
 
 > 여기서 기억할 것  
-> list_for_each_entry() : 리스트를 순위하다가 리스트를 지우면 리스트 순회를 멈춘다.  
+> list_for_each_entry() : 리스트를 순회하다가 리스트를 지우면 리스트 순회를 멈춘다.  
 > list_for_each_entry_safe() : 리스트 멤버를 지워도 계속 순회한다.
 
 ### 5. Priority + Aging
