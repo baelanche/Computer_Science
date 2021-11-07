@@ -424,3 +424,85 @@ static struct process *pcp_schedule(void)
 
 ### 7. Priority + PIP
 
+* low priority process 가 자원을 점유하고 high priority process 가 자원을 점유하면 high's priority 를 inheritance 한다.
+
+```.c
+bool pip_acquire(int resource_id)
+ {
+         struct resource *r = resources + resource_id;
+         if (!r->owner) {
+                 r->owner = current;
+                 return true;
+         }
+
+         current->status = PROCESS_WAIT;
+         r->owner->prio = current->prio;
+         list_add_tail(&current->list, &r->waitqueue);
+         return false;
+ }
+
+void pip_release(int resource_id)
+ {
+         struct resource *r = resources + resource_id;
+         struct process *ptr;
+         struct process *head;
+
+         assert(r->owner == current);
+         r->owner->prio = r->owner->prio_orig;
+         r->owner = NULL;
+
+         if (!list_empty(&r->waitqueue)) {
+                 struct process *waiter =
+                                 list_first_entry(&r->waitqueue, struct process, list);
+                 list_for_each_entry(ptr, &r->waitqueue, list) {
+                         if (waiter->prio < ptr->prio)
+                                 waiter = ptr;
+                 }
+                 assert(waiter->status == PROCESS_WAIT);
+                 list_del_init(&waiter->list);
+                 waiter->status = PROCESS_READY;
+                 list_add_tail(&waiter->list, &readyqueue);
+         }
+ }
+ 
+static struct process *pip_schedule(void)
+ {
+         struct process *next = NULL;
+         struct process *ptr;
+         struct process *head;
+         int max_prio = 0;
+
+         if (!current || current->status == PROCESS_WAIT) {
+                 goto pick_next;
+         }
+         if (current->age < current->lifespan) {
+                 if (!list_empty(&readyqueue)) {
+                         list_for_each_entry_safe(ptr, head, &readyqueue, list) {
+                                 if (current->prio < ptr->prio) {
+                                         list_add(&current->list, &readyqueue);
+                                         current = ptr;
+                                         list_del_init(&current->list);
+                                 }
+                         }
+                 }
+                 return current;
+         }
+
+ pick_next:
+         if (!list_empty(&readyqueue)) {
+                 list_for_each_entry_reverse(ptr, &readyqueue, list) {
+                         if (ptr->prio >= max_prio) {
+                                 max_prio = ptr->prio;
+                                 next = ptr;
+                         }
+                 }
+                 list_del_init(&next->list);
+         }
+         return next;
+ } 
+ ```
+ 
+* priority scheduling 기반으로 구현했다.
+* high priority process 는 자원 점유중인 low priority process 에게 priority 를 물려준다.
+* release 할 때 priority 를 반납한다.
+
