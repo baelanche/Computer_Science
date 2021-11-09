@@ -501,8 +501,8 @@ static struct process *pip_schedule(void)
          return next;
  } 
  ```
- 
-* priority scheduling 기반으로 구현했다.
+
 * high priority process 는 자원 점유중인 low priority process 에게 priority 를 물려준다.
+* 이후에 high priority process 가 다시 접근하여도 inheritance 가 일어난다.
 * release 할 때 priority 를 반납한다.
 
