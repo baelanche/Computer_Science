@@ -21,7 +21,7 @@
 
 * subproblem 인 a<sub>k</sub> 를 찾는다.
 * 좌측의 A<sub>ik</sub>, A<sub>kj</sub> 또한 optimal solution 이다.
-* c[i, j] : S<sub>ij</su> 의 optimal solution 의 크기
+* c[i, j] : S<sub>ij</sub> 의 optimal solution 의 크기
 * c[i, j] = c[i, k] + 1(a<sub>k</sub>를 선택했으므로 + 1 이다) + c[k, j]
 
 ![by_dp_s](https://user-images.githubusercontent.com/48989903/141131193-5ed8e5bb-f17f-4180-b42d-8050bb66e4e6.png)
