@@ -34,3 +34,4 @@ Knapsack problem 은 매 순간 subproblem 의 solution 이 original problem 에
 ## Problem
 
 1. [Activity Selection](https://github.com/baelanche/Computer_Science/blob/master/Algorithm/Greedy%20Algorithm/Activity%20Selection.md)
+2. [Huffman code](https://github.com/baelanche/Computer_Science/blob/master/Algorithm/Greedy%20Algorithm/Huffman%20codes.md)
