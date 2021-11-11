@@ -25,6 +25,12 @@ dp, divde and conquer 와 달리 문제를 쪼개서 풀어내는 알고리즘�
   * 하나의 solution 을 선택하고 subproblem 을 해결한다.
   * top-down
 
+### Knapsack
+
+Knapsack problem 은 greedy algorithm 으로 풀리지 않는 것은 자명하다. (간단한 예로 검증할 수 있다)  
+Knapsack problem 은 매 순간 subproblem 의 solution 이 original problem 에 포함시켜도 되는지 검증해야 한다.  
+그러나 greedy algotirhm 의 경우는 solution 을 먼저 포함시키기 때문에 문제 풀기에 알맞지 않다.
+
 ## Problem
 
 1. [Activity Selection](https://github.com/baelanche/Computer_Science/blob/master/Algorithm/Greedy%20Algorithm/Activity%20Selection.md)
