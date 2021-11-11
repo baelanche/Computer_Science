@@ -47,3 +47,6 @@
 
 ### Pseudo code
 
+### Performance
+
+O(n) : 최악의 경우 activity 전부를 순회한다.
