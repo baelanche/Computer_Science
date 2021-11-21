@@ -92,17 +92,17 @@
   * priority : 우선순위에 따라서 패킷 drop
   * random : 무작위 패킷 drop (random drop 이 일반적이다 -> fairness)
 
-### priority
+### Priority
 
 * highest priority 패킷을 먼저 보낸다.
 * priority 가 적용된 queue 를 multiple 로 사용하기도 한다.
 
-### round robin
+### Round Robin
 
 * multiple class
 * 각 클래스별로 한개의 패킷씩을 순차적으로 처리
 
-### Weighted fair queuing
+### Weighted Fair Queuing
 
 * round rotin 기반이다.
 * 각 클래스는 얻은 가중치에 따라 처리된다.
