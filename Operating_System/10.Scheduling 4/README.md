@@ -48,3 +48,27 @@
 
 ### Memory stall
 
+* 메모리에서 데이터를 읽어오기 위해 연산을 멈추게 되는 동작
+
+![stall](https://user-images.githubusercontent.com/48989903/144402584-2e61dd74-bf74-4dc9-a43b-3f37ec3147c3.png)
+
+* 멀티 코어 프로세서에서는 하이퍼쓰레딩을 통해 늘 컴퓨팅하는 것처럼 동작한다.
+
+## Algorithm Evaluation
+
+### 1. Deterministic evaluation
+
+* 스케줄링의 waiting, turnaround time 등을 계산을 통해 평가하는 방식
+* 간단하고 빠르다.
+* 간단한 예시에 적용하기 때문에 실제 컴퓨터에 적용하기는 힘들다.
+
+### 2. Simulation
+
+* 실제 시스템은 아니지만 그와 유사하면서 간단하게 구현한 모델을 평가하는 방식
+* 비슷한 환경에서 테스트 할수는 있지만 정확하지는 않다.
+
+### 3. Implementation
+
+* 원본을 구현하여 평가하는 방식
+* 구현이 어렵고 평가도 힘들다.
+
