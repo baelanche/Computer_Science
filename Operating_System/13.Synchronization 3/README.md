@@ -31,9 +31,9 @@ exit:
 
 ## Classical Problems of Synchronization
 
-* Bounded-buffer problem
-* Readers and writers problem
-* Dining-philosophers problem
+1. Bounded-buffer problem
+2. Readers and writers problem
+3. Dining-philosophers problem
 
 ### Bounded Buffer Problem
 
@@ -63,3 +63,48 @@ int out = 0;
 * `in == out` 일 때 buffer 는 비어있다.
 * `((in + 1) % BUFFER_SIZE) == out` 일 때 buffer 는 꽉찬 상태이다.
 * 위 로직으로 buffer 를 검증하기 때문에 실제로 쓰이는 buffer 는 7칸이 된다.
+
+> Mutex, Semaphore 등으로 bounded buffer 를 구현할 수 있다.
+
+### Readers-Writers Problem
+
+* shared resource 에 여러명의 readers, writers 가 접근할 때
+  * 여러명의 readers 를 허용할 수 있다.
+  * 한번에 한명의 writer 만을 허용할 수 있다.
+
+```.c
+int nr_readers = 0;
+Semaphore mutex = 1;
+Semaphore rw = 1;
+
+void Writer() {
+  wait(&rw);
+  do_write();
+  signal(&rw);
+}
+
+void Reader() {
+  wait(&mutex);
+  nr_readers++;
+  if (nr_readers == 1)
+    wait(&rw);
+  signal(&mutex);
+  
+  do_read();
+  
+  wait(&mutex);
+  nr_readers--;
+  if (nr_readers == 0)
+    signal(&rw);
+  signal(&mutex);
+}
+```
+
+* reader 변수를 보호하기 위해 mutex 변수를 활용하였다.
+* reader, writer 가 동시에 들어오는 것을 막기 위하여 rw 변수를 활용하였다.
+* 위 코드에서는 reader 가 끊임없이 들어온다면 writer 의 starvation 이 일어날 수 있다.
+  * writer 가 대기중이라면 더 이상의 reader 는 들어올 수 없는 등의 방식으로 해결할 수 있다.
+
+### Dining Philosophers Problem
+
+* shared resource 를 점유할 때 order 에 관한 문제를 일컫는다.
