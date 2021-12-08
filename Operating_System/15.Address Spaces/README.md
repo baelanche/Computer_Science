@@ -95,6 +95,7 @@ code, data, heap, stack 영역을 각각 따로 할당하고 아직 비어있는
 
 <br/>
 <hr>
+
 Segmentation 도 약점이 분명 존재한다. 그래서 더 작은 사이즈로 쪼개어서 사용하면 어떨까하는 이론이 생기기 시작한다.  
 small and fixed size 로 나누어서 할당하는 방식을 도입하게 되었고, 이것이 다음에 공부할 Paging 이다.  
 Paging 기법은 현존하는 아키텍처에서 채택하고 있다.
