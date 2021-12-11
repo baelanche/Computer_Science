@@ -33,3 +33,7 @@
 
 # Page Replacement
 
+* main memory 가 꽉 찬 시점에 어떤 page 를 제거하는 것이 좋을까?
+  * 앞으로 절대 참조가 되지 않을 page 를 제거한다.
+  * page fault 가 가장 발생되지 않을 page 를 제거한다. (page fault 발생시 성능 저하가 심하기 때문에)
+
