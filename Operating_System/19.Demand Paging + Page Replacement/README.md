@@ -1,7 +1,7 @@
 ## Copy-on-Write
 
 * fork() : child process 의 page table 생성 후 같은 frame 참조
-* Copy-on-Write 를 위해 write 를 끄고 마킹을 한다.
+* Copy-on-Write 를 위해 write 를 끄고 마킹을 한다. (별도의 변수 등의 방법)
 * 수정 발생시 write 가 가능하기 때문에 새로운 frame 을 참조한다
 * page fault 는 parent, child 모두에게 발생할 수 있다.
 * p1, p2 가 서로 다른 frame 을 참조하고 있고, 이 두 frame 의 내용이 같다면 같은 곳을 참조하게 하고 하나의 frame 을 날리기도 한다.
