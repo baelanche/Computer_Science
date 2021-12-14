@@ -109,6 +109,8 @@ LRU 를 구현하여 이상적으로 동작하는 방식은 아직까지도 없�
 
 ### Paging Virtual Memory
 
+![vm](https://user-images.githubusercontent.com/48989903/145977826-7ce38a48-6594-4397-9b18-7b43e278fac2.png)
+
 * code
   * read-only, sharable
   * 실행 파일의 뒤에 있다는 뜻으로 file-backed pages 라고도 한다.
