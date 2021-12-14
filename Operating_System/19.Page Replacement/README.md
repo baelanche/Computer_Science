@@ -1,36 +1,3 @@
-## Copy-on-Write
-
-* fork() : child process 의 page table 생성 후 같은 frame 참조
-* Copy-on-Write 를 위해 write 를 끄고 마킹을 한다. (별도의 변수 등의 방법)
-* 수정 발생시 write 가 가능하기 때문에 새로운 frame 을 참조한다
-* page fault 는 parent, child 모두에게 발생할 수 있다.
-* p1, p2 가 서로 다른 frame 을 참조하고 있고, 이 두 frame 의 내용이 같다면 같은 곳을 참조하게 하고 하나의 frame 을 날리기도 한다.
-
-### zero page
-
-* malloc() 한 순간 메모리 할당이 일어나는 것이 아니고 해당 메모리를 예약(선점)하는 것에 가깝다.
-* MMU 가 그 페이지에 대해 write 하면 page fault 가 발생하여 그 때 OS 에 의해 메모리 할당이 일어난다.
-* MMU 가 그 페이지에 대해 wirte 없이 read 하면 0으로 채워진 zero page 로 연결시킨다.
-
-### kernel address space
-
-![kas](https://user-images.githubusercontent.com/48989903/145663978-a669cf40-8801-405d-b19a-70ab944819cf.png)
-
-* 모든 프로세스의 일정부분은 kernel address space 가 점유한다.
-* fork() 를 실행할 시 kernel address space 도 공유한다.
-* intel 같은 경우, 접근제어를 위해 user space 에 대한 segment, kernel space 에 대한 segment 를 가지고 있다.
-
-## Thrashing
-
-* working set : 프로세스가 사용중인 set of pages
-* working set 이 main memory 의 크기보다 커지면 cpu 사용률이 뚝 떨어지게 되며 이를 thrashing 이라한다.
-* 프로세스를 죽이거나 메모리 크기를 늘리면 해결할 수 있다.
-
-##  Prepaging
-
-* paging 의 수준을 올린 것을 의미한다. (=prefetching)
-* spatial locality 에 기반해서 demand paging 이 일어날 때 주변 frame 을 같이 올리고, 내려서 성능의 향상을 만들어낸다.
-
 # Page Replacement
 
 * main memory 가 꽉 찬 시점에 어떤 page 를 제거하는 것이 좋을까?
@@ -119,10 +86,38 @@ LRU 를 구현하여 이상적으로 동작하는 방식은 아직까지도 없�
     * page 속성에 write 가 있다면 값을 1로 set 한다.
     * page 가 victim page 가 되어서 원래 공간으로(file, swap, ...) 돌아갈 때 modify 된 적이 있다면 새로 써준다.
 
-## Counting-based Page Replacement
+### Counting-based Page Replacement
 
 * LFU (Least Frequently Used) : 가장 방문 주기가 낮은 page 를 제거하는 방식
 * MFU (Most Frequently Used) : 가장 방문 주기가 높은 page 를 제거하는 방식
   * 구현이 어렵다.
   * OPT 에 적절하지 않다.
+
+## Global vs Local Page Replacement
+
+* Global Replacement
+  * all frames 에서 process 가 victime page 를 선택한다.
+  * 전체적인 성능은 좋으나 실행 시간의 변화가 크다.
+* Local Replacement
+  * process 의 page frame 을 replace 한다.
+  * 성능은 믿을만하나 메모리 사용률이 줄어든다.
+
+### Page Pinning
+
+* 몇몇 page 는 memory 에 항상 올려야 하는 경우가 있다. (e.g., I/O buffers)
+  * 하드웨어와 정보를 주고 받는 buffer 들은 pinning 한다.
+
+### Paging Virtual Memory
+
+* code
+  * read-only, sharable
+  * 실행 파일의 뒤에 있다는 뜻으로 file-backed pages 라고도 한다.
+  * victim page 가 될 때 단순히 버리기만 하면 된다.
+* stack, heap (anonymous pages)
+  * read, write
+  * start zero page, copy-on-write
+  * swap file 을 반드시 사용해야 한다.
+* data
+  * start file data, update 시에 copy-on-write
+  * cow 가 일어나면 swap file 을 반드시 사용해야 한다.
 
