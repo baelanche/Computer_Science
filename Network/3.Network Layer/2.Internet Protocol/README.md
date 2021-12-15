@@ -69,3 +69,44 @@
 * org 별 org block 의 숫자는 모두 다르다. (8개 조직이므로 3bits (2<sup>3</sup>))
 * ISP 는 ICANN 이라는 기관에서 IP 주소를 받아온다.
 
+## NAT : network address translation
+
+IPv4 의 IP 주소로는 host 에 주소를 할당하기에는 턱없이 부족하다.  
+IPv6 가 등장한지 20년이 넘었지만 적극적으로 사용하고 있지는 않는 추세이다.  
+IP 주소의 상당 부분을 보유하는 미국에서는 당장 IP 주소가 부족하지 않기 때문이다.  
+이 NAT 라는 기술이 도입되면서 IPv4 를 사용하여도 충분히 감당할 수 있는 상황이 되었다.
+
+<img width="1186" alt="nat" src="https://user-images.githubusercontent.com/48989903/146161879-d2172a41-ed3b-4f96-80de-ce9821141862.png">
+
+* 138.76.29.7 이라는 주소를 할당받았다. 하지만 우측의 내부망에 여러 host 에게 주소를 주어야 하는 상황이다.
+* 망내에서만 사용하는 임의의 port number(10.0.0.1~3)를 부여하고 망외부에서는 138.76.29.7 주소로 접근하게한다.
+* translation
+  * datagram 을 내보낼 때 : (source IP address, port number) -> (NAT IP address, new port number)
+  * table 에 위 두 쌍을 모두 저장한다.
+  * datagram 을 받을 때 : (NAT IP address, new port number) 를 table 에서 찾아 (source IP address, port number) 로 translation 한다.
+* 16 bit port number field : 60000 개 정도의 IP 를 확보할 수 있다.
+* 논쟁
+  * 오직 layer 3 에서만 처리할 수 있다.
+  * end-to-end 규약에 어긋난다.
+  * P2P 에는 적용되지 않는다.
+
+## IPv6
+
+* bit 를 늘림과 동시에 쓸모없는 header 를 정리하는 작업을 거쳤다.
+* 전세계 10~20% 정도가 IPv6 로 되어있다.
+* header : 40bytes
+* tunneling : IPv6 를 읽을 수 없는 라우터를 위해 IPv4 datagram 내에 IPv6 datagram 을 넣고 IPv4 방식으로 처리하는 방법
+
+<img width="1061" alt="tunneling" src="https://user-images.githubusercontent.com/48989903/146168133-867a216e-fe79-4e01-bad3-99bf79537d02.png">
+
+* C, D 는 IPv6 지원이 안된다.
+* C, D 를 지날 때에는 IPv4 헤더를 붙여서 지나게 한다.
+
+## Generalized Forwarding and SDN
+
+* control plane 을 소프트웨어화 시킨것이 SDN 이다.
+
+### OpenFlow
+
+* match + action : 패킷의 패턴을 찾고 해당되는 패킷에 대해 다양한 action 을 취한다.
+
