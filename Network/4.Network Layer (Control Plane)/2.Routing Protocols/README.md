@@ -23,6 +23,8 @@
 
 ### link state
 
+* 특정 시간마다 테이블을 업데이트한다.
+
 #### Dijkstra's algorithm
 
 * source node 로 부터 모든 node 로 가는 cost 를 계산한다.
