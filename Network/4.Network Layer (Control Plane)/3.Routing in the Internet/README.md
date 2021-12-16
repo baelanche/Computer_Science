@@ -1,4 +1,4 @@
-# AS
+# Routing in the Internet
 
 * 네트워크의 규모가 커감에 따라 역할 분담이 생겨나게 된다.
 * admin router 는 자신의 네트워크의 router 를 관리하도록 한다.
