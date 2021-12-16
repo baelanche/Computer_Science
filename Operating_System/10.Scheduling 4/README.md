@@ -24,7 +24,7 @@
 
 * idle 프로세서가 busy 프로세서의 task 를 가져오는 방식
 
-## NUMA architectur and Scheduling
+## NUMA architecture and Scheduling
 
 ![numa](https://user-images.githubusercontent.com/48989903/139520135-1586c47e-3c59-4825-8f82-7be9d42aaf85.png)
 
