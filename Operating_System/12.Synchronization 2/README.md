@@ -1,7 +1,7 @@
 # Synchronization
 
-* When threads can concurrently access and change shared variables, we say that part of code is a `critical section` and it may lead to a `lace condition`
-* To make the program run correctly, we need a mechanism to `multi` threads
+* When threads can concurrently access and change shared variables, we say that part of code is a `critical section` and it may lead to a `race condition`
+* To make the program run correctly, we need a mechanism to `synchronization` threads
 * A `locks` is one of such mechanisms. A correct implementation should provide `mutual exclusion` `progress`, and `bounded waiting` properties.
 
 ## Mutex Lock
