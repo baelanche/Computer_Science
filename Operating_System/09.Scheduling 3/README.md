@@ -91,7 +91,7 @@ RMS 로 스케줄링을 할 수 없다는 것은 static priority 로는 스케�
 
 ### Earliest Deadline First (EDF)
 
-* dealine 까지 남은 시간이 적을수록 priority 가 높다.
+* deadline 까지 남은 시간이 적을수록 priority 가 높다.
 * dynamic priority 스케줄링이다.
 
 ### Example
