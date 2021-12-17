@@ -62,7 +62,7 @@
 
 ## Inverted Page Table
 
-* 거꾸로 매팽하는 방법이다. PFN -> <VPN, PID>
+* 거꾸로 매핑하는 방법이다. PFN -> <VPN, PID>
 * page table 공간이 줄어든다.
 * entry 를 찾을 때의 시간이 오래걸린다.
 
