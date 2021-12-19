@@ -34,7 +34,7 @@
 
 ## Problem
 
-[1. BFS & DFS](https://github.com/baelanche/Computer_Science/blob/master/Algorithm/Network%20Flow/BFS%20%26%20DFS.md)  
-[2. Minimum Spanning Tree (Prim's algorithms)](https://github.com/baelanche/Computer_Science/blob/master/Algorithm/Network%20Flow/Minimum%20Spanning%20Trees.md)  
-[3. Maximum Flow (The Ford-Fulkerson method)](https://github.com/baelanche/Computer_Science/blob/master/Algorithm/Network%20Flow/Maximum%20Flow.md)
+1. [BFS & DFS](https://github.com/baelanche/Computer_Science/blob/master/Algorithm/Network%20Flow/BFS%20%26%20DFS.md)  
+2. [Minimum Spanning Tree (Prim's algorithms)](https://github.com/baelanche/Computer_Science/blob/master/Algorithm/Network%20Flow/Minimum%20Spanning%20Trees.md)  
+3. [Maximum Flow (The Ford-Fulkerson method)](https://github.com/baelanche/Computer_Science/blob/master/Algorithm/Network%20Flow/Maximum%20Flow.md)
 
