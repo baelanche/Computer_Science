@@ -31,3 +31,9 @@
 <img width="1133" alt="adjmatrix2" src="https://user-images.githubusercontent.com/48989903/146671651-40364bc9-dc9d-4d96-abc8-137aa0e518ec.png">
 
 * directed graph 인 경우도 마찬가지로 구성한다.
+
+## Problem
+
+1. BFS & DFS
+2. Minimum Spanning Tree (Prim's algorithms)
+3. Maximum Flow (The Ford-Fulkerson method)
