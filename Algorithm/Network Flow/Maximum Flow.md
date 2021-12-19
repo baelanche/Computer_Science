@@ -54,9 +54,9 @@ capacity of cut : c(S,T) = 3 + 3 = 6
 
 #### value of a flow = net flow
 
-* Proof : flow conversation
-
-- 생략 -
+Proof : flow conversation  
+  
+생략
 
 ## The Ford-Fulkerson method
 
@@ -100,6 +100,4 @@ residual capacity 를 알아보기 위해 양방향 간선을 그린다.
 #### A)
 
 <img width="608" alt="rc5" src="https://user-images.githubusercontent.com/48989903/146677044-31f94066-f47c-4c8b-8916-bdf21e80aeb5.png">
-
-
 
