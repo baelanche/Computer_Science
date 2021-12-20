@@ -101,3 +101,45 @@ residual capacity 를 알아보기 위해 양방향 간선을 그린다.
 
 <img width="608" alt="rc5" src="https://user-images.githubusercontent.com/48989903/146677044-31f94066-f47c-4c8b-8916-bdf21e80aeb5.png">
 
+capacity 가 0 일 경우 생략하여 그리기도 한다.  
+양방향 간선이 존재하므로 |residual network| <= 2|E| 이다.  
+residual network 를 통해 얼마만큼의 flow 를 더 보낼 수 있는지 판단할 수 있다.
+
+#### Augmenting path
+
+* residual network 를 먼저 그린 후 찾아야한다. (flow network X)
+* flow 를 증가시킬 수 있다.
+* 얼마만큼의 flow 를 더 보낼 수 있는지 찾는 것이 관건이다.
+* 선택한 path 에서 minimum-capacity 를 찾는다.
+
+#### Ford-Fulkerson method
+
+<img width="540" alt="aug1" src="https://user-images.githubusercontent.com/48989903/146724786-557bb509-0032-47b7-9d67-022ffd7652f0.png">
+
+* 위 그림은 차례로 flow network, residual network 이다.
+* residual network 에서 하나의 augmenting path 를 선택했다.
+* augmenting path 의 capacity 는 5, 4, 5 이므로 minimum-capacity 4 를 선택한다.
+
+<img width="459" alt="aug2" src="https://user-images.githubusercontent.com/48989903/146725072-04a6a63a-d7a3-49ea-a768-a9d370961ffa.png">
+
+* t -> s 방향(반대 방향)으로 augmenting path 값인 4 를 흘려보낸다.
+* 따라서 s -> t 방향으로의 capacity 는 4 씩 줄어든다.
+
+<img width="1122" alt="aug3" src="https://user-images.githubusercontent.com/48989903/146725728-7742fde9-740f-4b86-a4d6-5f140e9cf478.png">
+
+* 이를 통해서 만들어진 residual network 는 다시 flow network 로도 표현할 수 있다.
+* 더 이상의 augmenting path(s -> t) 를 찾을 수 없다.
+* value of a flow
+  * 기존 : 11 + 8 = 19
+  * ford-fulkerson method 적용 : 11 + 12 = 23
+
+### Example
+
+
+
+### Performance
+
+* finding augmenting path : O(V + 2E) = O(E)
+* maximum flow : f
+* running time : O(Ef)
+
