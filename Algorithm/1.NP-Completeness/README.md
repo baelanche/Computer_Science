@@ -172,19 +172,19 @@ halt/not halt 를 판별하는 프로그램을 만들 수 없다.
 
 문제를 풀 수 있는 polynomial-time algorithm 이 존재하는 문제
 
-* P problems
+* P problems : O(n<sup>k</sup>) : deterministic Turing machine 에 의해 polynomial-time 에 풀리는 문제
   * sorting
 
 ### Probably intractable problems
 
 문제를 풀 수 있는 polynomial-time algorithm 이 아마도 없는 문제
 
-* NP problems
+* NP problems : nondeterministic Turing machine 에 의해 polynomial-time 에 풀리는 문제
   * traveling salesman
 
 ### Polynomial time algorithms
 
-deterministic standard Turing machine 을 통해 polynomial time 에 실행되는 알고리즘
+standard (deterministic) Turing machine 을 통해 polynomial time 에 실행되는 알고리즘
 
 ### Deterministic Turing machine
 
@@ -194,4 +194,65 @@ deterministic standard Turing machine 을 통해 polynomial time 에 실행되�
   * delta(p, X) = (q, Y, L)
   * delta(p, X) = (q, X, R)
   * delta 함수가 2개이므로 non-deterministic 이다.
+
+### Nondeterministic Turing machine
+
+* left-hand part(transition function) 에 대해 하나 이상의 transition 을 가지고 있는 경우를 말한다.
+* 같은 input 에 대해 다른 output 을 제공한다.
+* accept 혹은 halt 의 결과가 나올 수 있다.
+* deterministic 의 superset 이다.
+
+### Nondeterminism
+
+튜링머신은 path 가 accept 인지 아닌지 2가지 방법을 통해 찾는다.
+
+* split : 여러 프로그램으로 분기하여 가능한 path 를 찾는다.
+* guess : 가능한 path 를 추측하여 찾는다.
+
+### NP Class of Problems
+
+```
+P : (deterministic) polynomial (P is a subset of NP)
+NP : nondeterministic polynomial
+```
+
+* Nondeterministic Turing machine 에 대해 만약 guess 한 path 가 모두 right path 라고 가정한다면 solution 이 올바르다는 것을 검증한 셈이다.
+* 그러므로 NP 문제를 보이는 것은, 이 solution 이 polynomial-time algorithm 에 대해 유효하다는 것을 보이는 것과 같다.
+* Condition of NP Class
+  * Decision Problem : solution 에 대해 예/아니오로 대답할 수 있는 문제
+  * Certificate : solution 의 조건에 맞는 subset 을 보이는 것
+  * verify a certificate
+* P 에 속하지 않고 NP 에 속하는 문제가 있는지는 모른다.
+* P = NP ? : 컴퓨터 과학 분야에서 아직 증명되지 않은 논제이다.
+
+#### e.g., LongPath
+
+* Problem : LongPath(G,k) 에 대하여 graph G 는 최소 k 길이 이상의 path 를 가지고 있는가? 단, path 는 cycle 을 제외하여야 한다.
+* Proposition : LongPath(G,k) 는 NP 문제이다.
+* Proof
+  * LongPath(G,k) 는 decision problem 이다. (O)
+  * LongPath(G,k) 가 요구하는 조건에 맞는 certificate 가 존재한다. : 최소 k 길이 이상의 path 를 구성하는 list of vertices
+  * certificate 를 증명할 알고리즘이 존재한다.
+    * Algorithm for verifying a certificate :
+    * Verify(G,k,C)
+    * 1. 그래프를 읽고 인접행렬을 구성한다.
+    * 2. certificate 를 담은 배열을 읽는다.
+    * 3. certificate 의 길이가 k 보다 작으면 false 를 리턴한다.
+    * 4. certificate 의 노드 사이에 edge 가 존재하지 않으면 false 를 리턴한다.
+    * 5. certificate 의 노드 사이에 cycle 이 존재하면 false 를 리턴한다.
+    * 6. true 를 리턴한다.
+
+### NP-Completes Problems
+
+* NP-Complete 는 NP 의 subset 이다.
+* NP 문제 중 polynomially reduce 가 가능하면 NP Complete 문제이다.
+* NP Complete 문제는 NP 문제 중 가장 어려운 문제이다. (NP Complete 문제를 해결하면 NP 문제도 해결할 수 있다)
+* 모든 NP 문제는 polynomial time 안에 NP Complete 문제로 reduce 될 수 있다.
+* 모든 NP Complete 문제는 polynomial time 안에 다른 NP Complete 문제로 reduce 될 수 있다.
+
+<img width="222" alt="redu" src="https://user-images.githubusercontent.com/48989903/146932026-9cb9ea5f-ada7-41dc-9874-cb1e4ed7e0fe.png">
+
+* 의미 : Q 는 polynomial time 안에 Q' 으로 reduce 할 수 있다.
+* Q' 은 NP Complete 문제 중 가장 어려운 문제이다.
+
 
