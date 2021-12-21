@@ -29,7 +29,7 @@
 점화식으로 나타내면 위와 같다.  
 이 식으로 테이블에 모든 경우의 수를 담게 되며 이는 greedy algorithm 보다 효율적이라 보기는 힘들다.
 
-### Proof : In order of finishi time
+### Proof : In order of finish time
 
 명제 : S<sub>k</sub> 가 nonempty 이며 S<sub>k</sub> 의 원소 a<sub>m</sub> 가 가장 빨리 종료되는 activity 일 때, a<sub>m</sub> 은 optimal solution 에 포함된다.
 
