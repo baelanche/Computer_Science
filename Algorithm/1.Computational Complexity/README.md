@@ -1,12 +1,4 @@
-# NP-Completeness
-
-* Computational complexity
-* The turing machine
-* Polynomial time
-* Polynomial-time verification
-* NP-completeness and reducibility
-
-## Computational complexity
+# Computational Complexity
 
 알고리즘에 대한 성능을 분석하는 학문을 말한다.
 
