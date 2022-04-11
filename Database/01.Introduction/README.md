@@ -23,3 +23,14 @@
 * Queries : request
 * Transactions : update
 
+### Support of Multiple Views of the Data
+
+* View
+  * Subset of the database
+  * Contains virtual data
+
+### Advantages of Using DBMS
+
+* Data normalization
+* Denormalization
+
