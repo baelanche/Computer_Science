@@ -29,6 +29,8 @@
 
 ### Three-Schema Architecture
 
+![image](https://user-images.githubusercontent.com/48989903/163157985-6846faa3-a6da-4f50-9906-11f4468ec692.png)
+
 * Internal schema at the internal level to describe physical storage structures and access paths (e.g., indexes)
 * Conceptual schema at the conceptual level to describe the structure and constraints for the whole database for a community of users
 * External schemas at the external level to describe the various user views 
