@@ -27,6 +27,6 @@ optimal solution 을 가진다는 것은 optimal subproblem solution 으로 구�
 
 Dynamic programming 기법은 다양한 문제 해결에 적용할 수 있다. 그 중 유명한 문제 몇가지에 적용시켜 보고자 한다.
 
-1. [The longest common subsequence](https://github.com/baelanche/Computer_Science/blob/master/Algorithm/Dynamic%20Programming/LSC.md)  
+1. [The longest common subsequence](https://github.com/baelanche/Computer_Science/blob/master/Algorithm/Dynamic%20Programming/LCS.md)  
 2. [Knapsack](https://github.com/baelanche/Computer_Science/blob/master/Algorithm/Dynamic%20Programming/Knapsack.md)  
 3. [Rod cutting](https://github.com/baelanche/Computer_Science/blob/master/Algorithm/Dynamic%20Programming/Rod%20cutting.md)
