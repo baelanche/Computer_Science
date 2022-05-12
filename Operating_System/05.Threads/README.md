@@ -28,7 +28,7 @@
 * 쓰레드는 주소 공간을 공유한다.
 * 쓰레드는 고유의 Thread ID, PC & SP, Stack 영역을 가진다.
 
-## processes vs threads
+## Processes vs Threads
 
 * 하나의 프로세스는 여러개의 쓰레드를 가질 수 있다.
 * 프로세스는 쓰레드가 동작하는 컨테이너이다.
