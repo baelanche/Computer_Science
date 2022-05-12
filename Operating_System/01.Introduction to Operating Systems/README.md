@@ -149,7 +149,7 @@ CPU가 request를 보냄 -> device 동작(그 동안 CPU는 자기 할 일을 �
 * Main memory
   * Only storage media that the CPU can access directly
   * CPU가 직접 접근할 수 있는 유일한 저장소
-    * 즉, CPU는 디스크는 직접 읽지 못한다
+    * 즉, CPU는 디스크를 직접 읽지 못한다
   * Random access, byte addressable
   * Typically volatile
 
