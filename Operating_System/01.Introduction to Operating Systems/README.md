@@ -159,7 +159,7 @@ CPU가 request를 보냄 -> device 동작(그 동안 CPU는 자기 할 일을 �
 
 ### Storage Definitions and Notation
 
-* Bit = 0 or 1, bygte = 8bits
+* Bit = 0 or 1, 1byte = 8bits
 * Word = A computer architecture's native unit of data
   * 32-bit architecture: 32bits = 8 x 4bits = 4bytes = 1word
   * 64-bit architecture: 64bits = 8bytes = 1word
