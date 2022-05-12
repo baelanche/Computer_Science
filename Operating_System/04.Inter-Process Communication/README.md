@@ -33,7 +33,7 @@ UI, network I/O 들을 다루는 프로세스, 렌더링하는 프로세스, 확
 ## Signals
 
 * 특정 이벤트를 프로세스에게 알리는 IPC 매커니즘
-* synchrozine or asynchronize
+* synchronize or asynchronize
 * software interrupt 로 여겨진다.
 * 운영체제는 프로세스에게 시그널을 전달한다.
 * 프로세스들은 서로 다른 signal handler 를 가지고 있다.
