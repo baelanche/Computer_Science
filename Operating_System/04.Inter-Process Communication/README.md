@@ -103,7 +103,7 @@ int main(int argc, char *argv[]) {
   
   cpid = fork();
   if (cpid == 0) {
-    close(pipefd[1]); /* Close unused wirte end */
+    close(pipefd[1]); /* Close unused write end */
     
     while(read(pipefd[0], &buf, 1) > 0)
       write(STDOUT_FILENO, &buf, 1);
