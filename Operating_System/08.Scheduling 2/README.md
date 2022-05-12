@@ -147,7 +147,7 @@
 
 ![round_robin](https://user-images.githubusercontent.com/48989903/137451454-2fa560e5-fb7d-4330-bfd7-d44bba0b0375.png)
 
-Characteristic
+### Characteristic
  * time slice
  * preemptive
  * no starvation
