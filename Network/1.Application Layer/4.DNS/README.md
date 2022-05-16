@@ -34,6 +34,7 @@ IP 주소에 'name' 을 매핑하는 시스템
 
 * TLD(top-level domain) servers : com, org, net, edu, ... (e.g., www.naver.com)
 * authoritative servers : 기관의 DNS 서버 (e.g., kin.naver.com, cafe.naver.com)
+  * 실제 개인 도메인과 IP 주소의 관계가 기록/저장/변경되는 서버. 그래서 권한의 의미인 Authoritative가 붙음. 일반적으로 도메인/호스팅 업체의 ‘네임서버’를 말하지만, 개인 DNS 서버 구축을 한 경우에도 여기에 해당함.
 
 ### Local DNS name servers
 
