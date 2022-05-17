@@ -16,6 +16,15 @@ An index is an auxiliary file that makes it more efficient to search for a recor
 ### Primary Index
 
 * case : without primary index
+
+```
+the number of records = 300000 with b = 4096 bytes
+record size R = 100 bytes on the unspanned file
+the number of blocks for the data file is celing(r/bfr) = celing(300000/4000) = 7500 blocks
+
+binary search on the data file would need approximately celing(log7500) = 13 blocks
+```
+
 * case : primary index
 
 ### Secondary Index
@@ -23,4 +32,10 @@ An index is an auxiliary file that makes it more efficient to search for a recor
 * A secondary index is a secondary means of accessing a file
 * The index is an ordered file with two fields
 * It is a dense index
+
+### Multi-level Index
+
+## B Tree
+
+## B+ Tree
 
