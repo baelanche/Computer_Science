@@ -48,13 +48,21 @@
 
 ### Lexical Analysis
 
+* Lexical Analyzer 는 input 값들을 의미있는 가장 작은 유닛으로 쪼갠다. 쪼개진 token 은 <name, attribute> 의 형태를 띈다.
+* example
 
+![image](https://user-images.githubusercontent.com/48989903/188868336-7796778e-1b3d-481c-91b8-6224b53da33c.png)
 
-## Syntax Analysis
+* symbol table 과 literal table 을 이용하여 동작한다.
+
+### Syntax Analysis
 
 * Syntax analyzer or parser performs syntax analysis
+  * token 을 그룹핑한다.
+  * parse tree 나 syntax tree 를 만든다.
 * Context Free Grammar (statement, expression)
   * describe recursive rules
+  * expression
 
 ## Semantic Analysis
 
