@@ -35,7 +35,7 @@ A)
 스스로 면도하지 않는 남자를 면도한다고 하였으므로 모순된다.
 ```
 
-halting problem 은 어떤 답을 선택하는지 모순되는 결과를 낳는다.  
+halting problem 은 어떤 답을 선택하든지 모순되는 결과를 낳는다.  
 halt/not halt 를 판별하는 프로그램을 만들 수 없다.
 
 ## Solvable Problems
