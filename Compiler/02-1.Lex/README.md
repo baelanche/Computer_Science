@@ -3,7 +3,17 @@
 * Lex compiler
 * Lex language
 
+[capture]
+
 ## Lex Specifications
+
+```
+declarations
+%%
+translation rules
+%%
+auxiliary procedures
+```
 
 * declarations
   * variables
@@ -11,8 +21,12 @@
   * regular definitions : 정규표현식의 이름 선언
 * translations rules
   * p<sub>i</sub> { action-i }
+* auxiliary procedures
+  * 필요한 procedure 이면 무엇이든 추가할 수 있다.
   
 ## Regular Expressions in Lex
+
+[capture]
 
 * \ : escape expressions
 * . : newline 을 제외한 모든 문자
@@ -25,13 +39,32 @@ e.g., [-+] -> [\-+]
 foo or barrrrrrrrrr...  
 foo or barbarbarbar...
 
-* yylex() : yyin 에 FILE* 을 매개변수로 넘겨준다. (default : stdin)
+## Generated Lexical Analyzer
 
-* no match : default rule - panic mode
-* yytext[] : pointer - lexemes
-* yyleng : length of yytext[]
+* lex.yy.c 는 yylex() 함수를 포함한다.
+* yylex()
+  * input file 인 yyin 의 token 을 스캔한다. (default : stdin)
+  * EOF 나 return 할 때 까지 실행된다.
+  * EOF 에 다다르면 0을 리턴한다.
 
-return 이 없으면 다음 token 을 계속 실행한다. return 하거나 eof 를 만날때 까지 실행함.
+### Mathces and Actions
+
+* Type of matches
+  * 한 개만 일치하는 경우 : 해당 action 을 수행한다.
+  * 서로 다른 길이를 가진 두 가지 이상이 일치하는 경우 : 길이가 가장 긴 것을 적용한다.
+  * 같은 길이를 가진 두 가지 이상이 일치하는 경우 : 더 앞에 위치한 rule 을 적용한다.
+  * 일치하는 것이 없는 경우 : default rule (panic mode) 이 실행된다. (= output 에 다음 문자가 복사된다)
+
+* Variables used in yylex()
+  * yytext[] : 인식한 문자열을 가진다.
+  * yyleng : token 의 길이를 가진다.
+  * yyin : input file 의 FILE* 이다. (default : stdin)
+  
+* Actions
+  * 각 패턴에는 일치하는 action 이 존재한다.
+  * C 언어 코드이다.
+  * return 구문을 포함할 수 있다.
+  * | : 다음 rule 을 실행하는 것과 같은 문법이다.
 
 word count : return 이 없기 때문에 eof 를 만날 때까지 yylex() 가 반복적으로 실행됨
 
