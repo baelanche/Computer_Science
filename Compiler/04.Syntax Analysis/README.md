@@ -19,3 +19,19 @@ parse tree 는 하나만 존재함
 
 두 예제 모두 left most 를 선택하여 왼쪽 심볼을 먼저 터미네이팅함  
 파싱은 문제가 없음 -> grammar 가 잘못됨
+
+syntax tree : 토큰 실행 순서에 대해서는 추상화 되어 있음 
+
+Regular Expression vs CFG(Context free grammar)
+
+r.e. 는 CFG 로 바뀔 수 있다.
+
+ambiguous parse tree 를 증명하려면 여러 개의 parse tree 를 만든다.
+
+A -> a : rule  
+A => a : A 의 derivation a
+
+elimination recursion
+
+S => Aa => Sda : non-immediate left recursion : 다른 방법으로 없애야 함
+
