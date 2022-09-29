@@ -35,3 +35,20 @@ elimination recursion
 
 S => Aa => Sda : non-immediate left recursion : 다른 방법으로 없애야 함
 
+Parsing
+
+* Top-down parsing : left-most derivation
+* Bottom-up parsing : right-most derivation in reveerse
+
+LL(1)
+
+* 첫번째 L : scan input left to right
+* 두번째 L : left-most derivation
+
+### Top-down parsing
+
+* backtracking : 2개 이상의 룰이 있을 때 올바른 token 을 찾지 못하면 되돌아가서 다른 룰을 선택함
+* predictive : 유니크한 룰이 있는 경우
+
+LL(1) : 룰의 교집합이 공집합이어야 함
+
