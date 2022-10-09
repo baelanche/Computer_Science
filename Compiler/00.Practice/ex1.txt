@@ -1,4 +1,0 @@
-start = 5;
-len = 4;
-str = "this is a string":start-len;
-result = str:0-2;
