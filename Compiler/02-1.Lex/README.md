@@ -3,7 +3,7 @@
 * Lex compiler
 * Lex language
 
-[capture]
+![image](https://user-images.githubusercontent.com/48989903/197540700-4dbc87f1-b5c1-42a6-8fdd-2345e02bdb68.png)
 
 ## Lex Specifications
 
@@ -29,7 +29,7 @@ auxiliary procedures
   
 ## Regular Expressions in Lex
 
-[capture]
+![image](https://user-images.githubusercontent.com/48989903/197540770-a12e3792-38b0-40da-a226-96cc1c74a741.png)
 
 * \ : \ 뒤의 문자는 문자 그대로 읽는다
 * . : newline 을 제외한 모든 문자
