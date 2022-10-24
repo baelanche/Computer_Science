@@ -26,7 +26,7 @@
   
 ## NFA to DFA
 
-[capture]
+![image](https://user-images.githubusercontent.com/48989903/197541101-f503e423-e8be-40ed-ade4-9459334e197d.png)
 
 * Subset Construction
   * 한 state 에서 다른 state 로 갈 때 이동가능한 경로를 하나로 묶음
