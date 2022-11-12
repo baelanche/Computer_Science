@@ -29,7 +29,7 @@
 ![numa](https://user-images.githubusercontent.com/48989903/139520135-1586c47e-3c59-4825-8f82-7be9d42aaf85.png)
 
 * NUMA 아키텍처에서는 로컬메모리 액세스 속도가 월등히 빠르다.
-* 다른 CPU 의 task 를 함부러 가져오면 안된다.
+* 다른 CPU 의 task 를 함부로 가져오면 안된다.
 
 ### Processor Affinity
 
